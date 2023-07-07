@@ -1,0 +1,15 @@
+---
+layout: page
+title: Projects
+permalink: /projects/
+---
+
+<div id="projectpage-body">
+    <div id="projectpage-container">
+        {% for item in site.data.menu %}
+            {% if item.category == "projectpage" %}
+                <a id="projectpage-item" href="{{ site.baseurl }}{{ page.url }}{{ item.link }}">{{ item.title }}</a>
+            {% endif %}    
+        {% endfor %}
+    </div>
+</div>

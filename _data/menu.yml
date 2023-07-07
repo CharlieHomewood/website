@@ -1,0 +1,45 @@
+# socials
+
+- title: <ion-icon name="logo-github"></ion-icon> GitHub
+  link: https://github.com/CharlieHomewood
+  category: social
+
+- title: <ion-icon name="logo-linkedin"></ion-icon> LinkedIn
+  link: https://www.linkedin.com/in/charliehomewood/
+  category: social
+
+- title: <ion-icon name="logo-twitter"></ion-icon> Twitter
+  link: https://twitter.com/CHomewood99
+  category: social
+
+- title: <ion-icon name="logo-youtube"></ion-icon> YouTube
+  link: https://www.youtube.com/@CharlieHomewood
+  category: social
+
+- title: <ion-icon name="mail"></ion-icon> Email me!
+  link: https://mail.google.com/mail/?view=cm&fs=1&to=charliehomewood99@gmail.com
+  category: social
+
+# Pages
+
+- title: Home
+  link: index.html
+  category: home
+
+- title: Blog
+  link: blog
+  category: page
+
+- title: Projects
+  link: projects
+  category: page
+
+- title: About
+  link: about
+  category: page
+
+# project pages
+
+# - title: TBA
+#   link: TBA (Change in page file too")
+#   category: projectpage

@@ -1,0 +1,17 @@
+/* 404 styling */
+/* Probably didn't need to be a separate file but oh well*/
+
+h1 {
+    text-align: center;
+    font-size: 160px;
+}
+
+body {
+    text-align: center;
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 200%;
+}

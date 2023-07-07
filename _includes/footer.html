@@ -1,0 +1,12 @@
+<div id="footer">
+    <div id="footer-container">
+        {% for item in site.data.menu %}
+            {% if item.category == "social"%}
+                <a id="footer-social-link" href="{{ item.link }}" target="_blank">{{ item.title }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div id="footer-copyright">
+        <span>&copy {{ "now" | date: "%Y" }} {{ site.author }}</span>
+    </div>
+</div>
