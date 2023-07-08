@@ -19,27 +19,3 @@
 - title: <ion-icon name="mail"></ion-icon> Email me!
   link: https://mail.google.com/mail/?view=cm&fs=1&to=charliehomewood99@gmail.com
   category: social
-
-# Pages
-
-- title: Home
-  link: index.html
-  category: home
-
-- title: Blog
-  link: blog
-  category: page
-
-- title: Projects
-  link: projects
-  category: page
-
-- title: About
-  link: about
-  category: page
-
-# project pages
-
-# - title: TBA
-#   link: TBA (Change in page file too")
-#   category: projectpage

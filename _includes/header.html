@@ -3,15 +3,13 @@
         <div id="header-siteurl-container">
             <a id="header-siteurl" href="{{ site.baseurl }}/">Home</a>
         </div>
-        <!-- Container for navigation menu -->
+
         <div id="header-nav-container">
-            <!-- for every item in the menu.yml file, 
-                check that the title is not "Home". If it is not, 
-                then add the link to the navigation menu -->
-            {% for item in site.data.menu %}
-                {% if item.title != "Home" and item.category == "page" %}
-                    <a id="header-nav-link" href="{{ site.baseurl }}/{{ item.link }}">{{ item.title }}</a> 
-                {% endif %}
+            {% assign sorted_pages = site.pages | sort: "order" %}
+            {% for page in sorted_pages %}
+                {% if page.category == "header" and page.title != "Home" %}
+                    <a id="header-nav-link" href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a>
+                {% endif %}    
             {% endfor %}
         </div>
     </div>

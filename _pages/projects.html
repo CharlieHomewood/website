@@ -1,14 +1,16 @@
 ---
 layout: page
 title: Projects
-permalink: /projects/
+permalink: projects.html
+category: header
+order: 2
 ---
 
 <div id="projectpage-body">
     <div id="projectpage-container">
-        {% for item in site.data.menu %}
-            {% if item.category == "projectpage" %}
-                <a id="projectpage-item" href="{{ site.baseurl }}{{ page.url }}{{ item.link }}">{{ item.title }}</a>
+        {% for page in site.pages %}
+            {% if page.category == "projectpage" %}
+                <a id="projectpage-item" href="{{ site.baseurl }}{{ permalink }}{{ page.url }}">{{ page.title }}</a>
             {% endif %}    
         {% endfor %}
     </div>

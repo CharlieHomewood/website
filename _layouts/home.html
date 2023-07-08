@@ -3,23 +3,24 @@ layout: default
 ---
 
 <div id="home-body">
+
     <div id="home-h1">
         <a id="home-h1-link" href="{{ site.baseurl }}/">{{ site.title }}</a>
 
     </div>
-    <!-- Container for navigation menu -->
+
     <div id="home-midsection">
         <div id="home-nav-container-a">
-            <!-- for every item in the menu.yml file, 
-                check that the title is not "Home". If it is not, 
-                then add the link to the navigation menu -->
-            {% for item in site.data.menu %}
-                {% if item.category == "page" %}
-                    <a id="home-nav-a" href="{{ site.baseurl }}/{{ item.link }}">{{ item.title }}</a>
+            {% assign sorted_pages = site.pages | sort: "order" %}
+            {% for page in sorted_pages %}
+                {% if page.category == "header" and page.title != "Home" %}
+                    <a id="home-nav-a" href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a>
                 {% endif %}    
             {% endfor %}
         </div>
     </div>
+
     {{ content }}
     {% include footer.html %}
+    
 </div>
