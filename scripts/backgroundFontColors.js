@@ -20,16 +20,16 @@ var aboutContentLink = document.querySelectorAll("#about-content-link");
 // DEFINE PAGE COLORS //
 
 // PROJECTS //
-var projectsBackgroundColor = "background-color: rgba(1, 41, 41, 255)";
-var projectsFontColor = "color: rgba(202, 69, 70, 255)";
+var projectsBackgroundColor = "background-color: rgba(156, 44, 45, 255)";
+var projectsFontColor = "color: rgba(255, 192, 192, 255)";
 
 // ABOUT //
-var aboutBackgroundColor = "background-color: rgba(19, 74, 79, 255)";
-var aboutFontColor = "color: rgba(14, 255, 204, 255)";
+var aboutBackgroundColor = "background-color: rgba(13, 130, 63, 255)";
+var aboutFontColor = "color: rgba(162, 255, 200, 255)";
 
 // BLOG //
 var blogBackgroundColor = "background-color: rgba(69, 39, 117, 255)";
-var blogFontColor = "color: rgba(202, 187, 255, 255)";
+var blogFontColor = "color: rgba(214, 192, 255, 255)";
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
