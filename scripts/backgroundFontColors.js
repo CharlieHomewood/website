@@ -15,7 +15,8 @@ var projectsPageItem = document.querySelectorAll("#projectpage-item");
 var projectPost = document.querySelectorAll("#projects-post");
 var footerSocialLink = document.querySelectorAll("#footer-social-link");
 var footerCopyright = document.querySelectorAll("#footer-copyright");
-var aboutContentLink = document.querySelectorAll("#about-content-link");
+var otherpageLink = document.querySelectorAll("#otherpage-link");
+var anchor = document.querySelectorAll("#text-link");
 
 // DEFINE PAGE COLORS //
 
@@ -69,6 +70,15 @@ if (currentURL.includes("projects")) {
     footerCopyright.style.cssText = `${projectsBackgroundColor}; ${projectsFontColor}`;
   });
 
+  otherpageLink.forEach((otherpageLink) => {
+    otherpageLink.style.cssText = `${projectsBackgroundColor}; ${projectsFontColor}`;
+  });
+
+  anchor.forEach((anchor) => {
+    anchor.style.cssText = `${projectsBackgroundColor}; ${projectsFontColor}`;
+    anchor.target = "_blank";
+  });
+
 } else if (currentURL.includes("about")) {
 
   // ABOUT PAGE //  
@@ -97,8 +107,13 @@ if (currentURL.includes("projects")) {
     footerCopyright.style.cssText = `${aboutBackgroundColor}; ${aboutFontColor}`;
   });
 
-  aboutContentLink.forEach((aboutContentLink) => {
-    aboutContentLink.style.cssText = `${aboutBackgroundColor}; ${aboutFontColor}`;
+  otherpageLink.forEach((otherpageLink) => {
+    otherpageLink.style.cssText = `${aboutBackgroundColor}; ${aboutFontColor}`;
+  });
+
+  anchor.forEach((anchor) => {
+    anchor.style.cssText = `${aboutBackgroundColor}; ${aboutFontColor}`;
+    anchor.target = "_blank";
   });
 
 } else if (currentURL.includes("blog")) {
@@ -129,6 +144,15 @@ if (currentURL.includes("projects")) {
 
   footerCopyright.forEach((footerCopyright) => {
     footerCopyright.style.cssText = `${blogBackgroundColor}; ${blogFontColor}`;
+  });
+
+  otherpageLink.forEach((otherpageLink) => {
+    otherpageLink.style.cssText = `${blogBackgroundColor}; ${blogFontColor}`;
+  });
+
+  anchor.forEach((anchor) => {
+    anchor.style.cssText = `${blogBackgroundColor}; ${blogFontColor}`;
+    anchor.target = "_blank";
   });
 
 }

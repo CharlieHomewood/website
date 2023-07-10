@@ -10,7 +10,7 @@ order: 2
     <div id="projectpage-container">
         {% for page in site.pages %}
             {% if page.category == "projectpage" %}
-                <a id="projectpage-item" href="{{ site.baseurl }}{{ permalink }}{{ page.url }}">{{ page.title }}</a>
+                <a id="projectpage-item" href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a>
             {% endif %}    
         {% endfor %}
     </div>
