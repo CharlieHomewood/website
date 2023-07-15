@@ -1,3 +1,5 @@
+@import "cobalt.css";
+
 /* includes/footer styling */
 
 #footer {
@@ -434,7 +436,7 @@
   text-align: left;
 }
 
-/* posts/projects */
+/* posts/projects and blogs */
 
 #centered-image {
   display: inline-flex;
@@ -442,9 +444,41 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin: 0;
 }
 
 #centered-image-caption {
   margin-top: 0.75rem;
   font-style: italic;
+  font-size: 1.25rem;
+}
+
+figure.highlight > pre {
+  margin: 0;
+}
+
+#code-snippet-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-block: 2rem;
+}
+
+#code-snippet-caption {
+  margin: 0;
+  margin-top: 0.75rem;
+  font-style: italic;
+  font-size: 1.25rem;
+}
+
+#otherpage-link {
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+#text-link {
+  font-weight: bold;
+  text-decoration: none;
 }

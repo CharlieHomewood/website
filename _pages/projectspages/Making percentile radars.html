@@ -7,9 +7,9 @@ permalink: /projects/project1
 
 <div id="projects-body">
     <div id="projects-container">
-        {% for post in site.posts %} 
+        {% for post in site.posts reversed %} 
             {% if post.category == "project 1" %}
-                <a id="projects-post" href="{{ site.baseurl }}{{ post.url }}"><p id="projects-post-title">{{ post.title }}</p><p id="projects-post-date">{{ post.date | date: "%-d %B %Y" }}</p></a>
+                <a id="projects-post" href="{{ site.baseurl }}{{ post.url }}"><p id="projects-post-title">{{ post.title }}</p><p id="projects-post-date">{{ post.date | date: "%A, %-d %B %Y" }}</p></a>
             {% endif %}
         {% endfor %}
     </div>

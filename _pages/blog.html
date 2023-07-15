@@ -10,7 +10,7 @@ order: 1
     <div id="blog-container">
         {% for post in site.posts %} 
             {% if post.category == "blog" %}
-                <a id="blog-item" href="{{ site.baseurl }}{{ post.url }}"><p id="blog-title">{{ post.title }}</p><p id="blog-date">{{ post.date | date: "%-d %B %Y" }}</p></a>
+                <a id="blog-item" href="{{ site.baseurl }}{{ post.url }}"><p id="blog-title">{{ post.title }}</p><p id="blog-date">{{ post.date | date: "%A, %-d %B %Y" }}</p></a>
             {% endif %}
         {% endfor %}
     </div>
