@@ -22,6 +22,8 @@ The reason why, in my view, this form of data visualisation works so well for sp
 
 I'm far from the first person to use *percentile radars*, despite not everyone using that term to describe them. However, I personally think they are great and believe it would be a fantastic place to start in an analysis project. However, I don't simply want to create static graphs representing a particular player's stats at a particular time, which is what is more commonly seen. I instead hope to create a dynamic visualisations that allows the user to choose the variables they wish to plot, the players they want to analyse, the sample they wish to draw from, and so on and so on. I think this more dynamic approach is more exciting and hopefully means this project can result in the creation of a useful tool for those interested in analysing the world of football with ease. 
 
-I'm looking forward to getting started and will be posting each stage of the project as and when I am willing and able to make progress on it. I'm excited to see how it turns out, and I hope you are as well. Of course, I encourage any constructive feedback you might have on my approach as I progress throughout the project. In the next post, I'll begin by getting the data we're going to use and making it fit-for-purpose.
+I'm looking forward to getting started and will be posting each stage of the project as and when I am willing and able to make progress on it. I'm excited to see how it turns out, and I hope you are as well. Of course, I encourage any constructive feedback you might have on my approach as I progress throughout the project. 
+
+In the <a id="otherpage-link" href="{{site.baseurl}}/projects/project1/2023/07/15/project1-post2">next post</a>, I'll begin by getting the data we're going to use and making it fit-for-purpose.
 
 Thank you and I hope you enjoy following along!

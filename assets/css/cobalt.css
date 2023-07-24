@@ -31,7 +31,7 @@ figure.highlight {width: fit-content; margin: 0; padding: 0;}
 .highlight .kr { color: #b65076; font-weight: bold } /* Keyword.Reserved */
 .highlight .kt { color: #cdcaa9; font-weight: bold } /* Keyword.Type */
 .highlight .ld { color: #ffffff } /* Literal.Date */
-.highlight .m { color: #0086f7; font-weight: bold } /* Literal.Number */
+.highlight .m { color: #b65076; font-weight: bold } /* Literal.Number */
 .highlight .s { color: #0086d2 } /* Literal.String */
 .highlight .na { color: #ff0086; font-weight: bold } /* Name.Attribute */
 .highlight .nb { color: #ffffff } /* Name.Builtin */
@@ -40,7 +40,7 @@ figure.highlight {width: fit-content; margin: 0; padding: 0;}
 .highlight .nd { color: #ffffff } /* Name.Decorator */
 .highlight .ni { color: #ffffff } /* Name.Entity */
 .highlight .ne { color: #ffffff } /* Name.Exception */
-.highlight .nf { color: #ff0086; font-weight: bold } /* Name.Function */
+.highlight .nf { color: #ffffff } /* Name.Function */
 .highlight .nl { color: #ffffff } /* Name.Label */
 .highlight .nn { color: #ffffff } /* Name.Namespace */
 .highlight .nx { color: #ffffff } /* Name.Other */
