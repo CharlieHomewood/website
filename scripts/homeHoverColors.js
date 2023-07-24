@@ -73,6 +73,28 @@ homeNavA.forEach(function(homeNavA) {
 
     }
 
+    else if (text === "Resources") {
+      
+      homeNavA.style.cssText = `${resourcesFontColor}; ${transition}`;
+
+      homeBody.forEach((homeBody) => {
+        homeBody.style.cssText = `${resourcesBackgroundColor}; ${transition}`;
+      });
+
+      homeH1Link.forEach((homeH1Link) => {
+        homeH1Link.style.cssText = `${resourcesFontColor}; ${transition}`;
+      });
+
+      footerSocialLink.forEach((footerSocialLink) => {
+        footerSocialLink.style.cssText = `${resourcesFontColor}; ${transition}`;
+      });
+
+      footerCopyright.forEach((footerCopyright) => {
+        footerCopyright.style.cssText = `${resourcesFontColor}; ${transition}`;
+      });
+
+    }
+
   });
 
   homeNavA.addEventListener("mouseout", function() {

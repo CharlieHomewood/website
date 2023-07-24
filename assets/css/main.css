@@ -496,8 +496,18 @@ code.language-r {
 
 #otherpage-link {
   font-weight: bolder;
+  text-decoration: none;
+}
+
+#otherpage-link:hover {
+  text-decoration: underline;
 }
 
 #text-link {
   font-weight: bold;
+  text-decoration: none;
+}
+
+#text-link:hover {
+  text-decoration: underline;
 }
