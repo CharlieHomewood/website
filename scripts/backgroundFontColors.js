@@ -21,16 +21,16 @@ var anchor = document.querySelectorAll("#text-link");
 // DEFINE PAGE COLORS //
 
 // PROJECTS //
-var projectsBackgroundColor = "background-color: rgba(156, 44, 45, 255)";
-var projectsFontColor = "color: rgba(255, 192, 192, 255)";
+var projectsBackgroundColor = "background-color: rgba(255, 199, 199, 255)";
+var projectsFontColor = "color: rgba(156, 44, 45, 255)";
 
 // ABOUT //
-var aboutBackgroundColor = "background-color: rgba(13, 130, 63, 255)";
-var aboutFontColor = "color: rgba(162, 255, 200, 255)";
+var aboutBackgroundColor = "background-color: rgba(199, 255, 222, 255)";
+var aboutFontColor = "color: rgba(13, 130, 63, 255)";
 
 // BLOG //
-var blogBackgroundColor = "background-color: rgba(69, 39, 117, 255)";
-var blogFontColor = "color: rgba(214, 192, 255, 255)";
+var blogBackgroundColor = "background-color: rgba(220, 199, 255, 255)";
+var blogFontColor = "color: rgba(69, 39, 117, 255)";
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
