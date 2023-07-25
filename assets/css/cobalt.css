@@ -12,7 +12,7 @@ figure.highlight {width: fit-content; margin: 0; padding: 0;}
 .highlight .p { color: #ffffff } /* Punctuation */
 .highlight .cm { color: #006ac8; font-style: italic; background-color: #002240 } /* Comment.Multiline */
 .highlight .cp { color: #006ac8; font-weight: bold; font-style: italic; background-color: #002240 } /* Comment.Preproc */
-.highlight .c1 { color: #006ac8; font-style: italic; background-color: #002240 } /* Comment.Single */
+.highlight .c1 { color: #006ac8; font-style: italic; background-color: rgba(0, 0, 0, 0) } /* Comment.Single */
 .highlight .cs { color: #006ac8; font-style: italic; background-color: #002240 } /* Comment.Special */
 .highlight .gd { color: #ffffff } /* Generic.Deleted */
 .highlight .ge { color: #ffffff } /* Generic.Emph */

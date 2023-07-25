@@ -18,15 +18,15 @@ To start, we need to load some R packages in our R code script to allow us to us
 <div id="code-snippet-container">
   {% highlight r %}
   
-  ##### load packages #####
+    ##### load packages #####
 
-  if (!require(tidyverse)) {
-    install.packages("tidyverse", dependencies = TRUE); require(tidyverse)    
-  }
+    if (!require(tidyverse)) {
+      install.packages("tidyverse", dependencies = TRUE); require(tidyverse)    
+    }
 
-  if (!require(rvest)) {
-    install.packages("rvest", dependencies = TRUE); require(rvest)
-  }
+    if (!require(rvest)) {
+      install.packages("rvest", dependencies = TRUE); require(rvest)
+    }
   {% endhighlight %}
   <p id="code-snippet-caption"> Fig 1: Loading R packages </p>
 </div>
