@@ -205,6 +205,10 @@ We're not quite ready to be finished with cleaning the data. A reasonable assump
           across(where(is.numeric), sum)
         ) 
 
+    # Players cannot play more than 38 games in a season in the top 5 European divisions
+    final_table_outfield <- final_table_outfield %>% 
+        filter(MP <= 38)
+
     # remove duplicated character values after combining
     final_table_outfield$Nation <- str_remove(final_table_outfield$Nation, "^[^,]+,\\s*")    
     final_table_outfield$Pos <- str_remove(final_table_outfield$Pos, "^[^,]+,\\s*")
@@ -221,6 +225,7 @@ We're not quite ready to be finished with cleaning the data. A reasonable assump
       }
     })
 
+    # reorder selected columns
     final_table_outfield <- final_table_outfield %>% relocate(id, Player, Pos, Nation, Squad, Comp, Age)
 
     # convert age and born to numeric class
@@ -234,12 +239,14 @@ We're not quite ready to be finished with cleaning the data. A reasonable assump
 
 This relatively larger code snippet starts by looking at the values in the "Nation" and "Comp" columns. The values in these columns initially have two-letter abbreviations as a prefix. I personally do not want these to be present and so the first two lines remove these. After this, we group by Player, Age and Nation, variables which are consistent for each unique player and so do not change when the player moves to a new team (at long as we are looking at a single point in time, i.e. now). You might assume we could just group by the player's name, but some players actually have the same names, despite being different players, and so grouping by age and nationality as well avoids grouping together rows that do not actually refer to the same player. Unless two players share the exact same name, age and nationality, they will not be merged accidentally. As far as I can tell, given the data we have, this is the best way to group players, but note that it is not perfect.
 
-Once we group by Player, Age and Nation, we combine all the character class columns and separate their values by using commas (e.g. Liverpool and Arsenal becomes: Liverpool, Arsenal) and we add together the values from the numeric class columns. This gives us one row corresponding to a unique player, accumulating their data across all the clubs they may have played for in that season. After this, some of our character class columns have produced duplications in their values (e.g. England, England) and so I remove the first term and the comma from the values in these columns. 
+Next, any rows where the number of matches played is greater than 38 are removed. This is because, in Europe's top 5 divisions, no division has more than 38 league games in a season. After this, we combine all the character class columns and separate their values by using commas (e.g. Liverpool and Arsenal becomes: Liverpool, Arsenal) and we add together the values from the numeric class columns. This gives us one row corresponding to a unique player, accumulating their data across all the clubs they may have played for in that season. After this, some of our character class columns have produced duplications in their values (e.g. England, England) and so I remove the first term and the comma from the values in these columns. 
 
 Next, we are doing something similar as before but with the Comp column. If a player transfers from one team to another team within the same division, the Comp value for that player will have a duplication (e.g. Premier League, Premier League). However, if the player moves from one team to another team in a different division, their Comp value will record both competitions that player has played in (e.g. Premier League, La Liga). We want to keep the format of the latter but we want to avoid duplicating when the player moves clubs within the same division. That is what the next function achieves. It first splits the value into its two components either side of the comma. Next, the if function checks to see if the length of the "parts" object is greater than one (i.e. checks that there are indeed two) and checks to see if the two parts are equal. If there is more than one part and they are equal to each other, the function replaces what would be the duplicated value (Premier League, Premier League) with just the first part (Premier League). However, if the two parts are not equal, the function just leaves them as they are. 
 
 The last part of this code snippet first reorders some of the columns and then converts the age and born columns to numeric class. We initially needed them to be characters to avoid our code from combining someone's age if they had more than one columns. If a player was 26 years old but had two columns initially, if we converted the age column to numeric before running this code, we would get an age of 52 which would be incorrect.
 
 We have now finished cleaning the data. We now have four data frames, two of which we will be using for this project. As I have touched on, whilst this data could be used in other projects, we did also perform some cleaning procedures that prevent us from analysing the data in certain ways (e.g. comparings a player's performance across the different clubs they played for). This isn't a huge issue as we can always grab the data from <a id="text-link" href="https://fbref.com/en/">fbref</a> again and clean it differently. Nonetheless, this concludes our preparation of the data.
+
+Another issue worth noting is that, due to limitations with the data set, when we combined our rows towards the end we grouped by player name (Player), their age (Age) and their nationality. Unfortunately, there are no other variables that could be used to match rows referring to the same player. From what I was able to tell, this has resulted in the removal of around 2-4 players from the data set who otherwise would have been valid player rows, as they have identical names, ages and nationalities. Whilst, this is a very small proportion of the overall data set, it is not ideal and worth considering when interpreting analyses. 
 
 In the next post, I want to begin with some data wrangling to convert our (many) different metrics into percentiles so that we may begin to create our percentile radars. If you enjoyed reading this post or have any suggestions or thoughts, do let me know. Thank you for following along!
