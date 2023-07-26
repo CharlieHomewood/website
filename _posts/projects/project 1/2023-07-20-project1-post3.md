@@ -233,10 +233,6 @@ We're not quite ready to be finished with cleaning the data. A reasonable assump
       final_table_outfield[ , 7:ncol(final_table_outfield)], 
       as.numeric
     )
-
-    # drop incomplete rows
-    final_table_outfield <- final_table_outfield %>% 
-      drop_na()
     {% endhighlight %}
     <p id="code-snippet-caption"> Fig 8: Combining rows so that each row is a unique player. </p>
 </div>
@@ -247,7 +243,7 @@ Next, any rows where the number of matches played is greater than 38 are removed
 
 Next, we are doing something similar as before but with the Comp column. If a player transfers from one team to another team within the same division, the Comp value for that player will have a duplication (e.g. Premier League, Premier League). However, if the player moves from one team to another team in a different division, their Comp value will record both competitions that player has played in (e.g. Premier League, La Liga). We want to keep the format of the latter but we want to avoid duplicating when the player moves clubs within the same division. That is what the next function achieves. It first splits the value into its two components either side of the comma. Next, the if function checks to see if the length of the "parts" object is greater than one (i.e. checks that there are indeed two) and checks to see if the two parts are equal. If there is more than one part and they are equal to each other, the function replaces what would be the duplicated value (Premier League, Premier League) with just the first part (Premier League). However, if the two parts are not equal, the function just leaves them as they are. 
 
-The last part of this code snippet first reorders some of the columns and then converts the age and born columns to numeric class. We initially needed them to be characters to avoid our code from combining someone's age if they had more than one columns. If a player was 26 years old but had two columns initially, if we converted the age column to numeric before running this code, we would get an age of 52 which would be incorrect. As a final step, any rows containing NAs are removed from the data set. I believe it would be inappropriate to use any method other than stepwise deletion. 
+The last part of this code snippet first reorders some of the columns and then converts the age and born columns to numeric class. We initially needed them to be characters to avoid our code from combining someone's age if they had more than one columns. If a player was 26 years old but had two columns initially, if we converted the age column to numeric before running this code, we would get an age of 52 which would be incorrect.
 
 We have now finished cleaning the data. We now have four data frames, two of which we will be using for this project. As I have touched on, whilst this data could be used in other projects, we did also perform some cleaning procedures that prevent us from analysing the data in certain ways (e.g. comparings a player's performance across the different clubs they played for). This isn't a huge issue as we can always grab the data from <a id="text-link" href="https://fbref.com/en/">fbref</a> again and clean it differently. Nonetheless, this concludes our preparation of the data.
 
