@@ -11,6 +11,8 @@ Hello! In the <a id="otherpage-link" href="{{site.baseurl}}/projects/project1/20
 
 Let's get started!
 
+## Separate GKs from outfield players
+
 Now, as mentioned, we left off in the last post by creating an object called "tables". This object is a list of all the tables we collected from <a id="text-link" href="https://fbref.com/en/">fbref</a>. In football, goalkeepers have a unique role on the pitch and this uniqueness is reflected by the various metrics used to measure goalkeepers. We currently have two tables in our "tables" list that are exclusively for goalkeepers. Since goalkeepers are a subset of all football players, these tables have less rows than the other more general stats tables. As such, we're going to start by taking these goalkeeper-exclusive tables out of the "tables" list and putting them inside a new list - "gk_tables".
 
 <div id="code-snippet-container">
@@ -227,6 +229,9 @@ We're not quite ready to be finished with cleaning the data. A reasonable assump
 
     # reorder selected columns
     final_table_outfield <- final_table_outfield %>% relocate(id, Player, Pos, Nation, Squad, Comp, Age)
+
+    # make NAs 0
+    final_table_outfield[is.na(final_table_outfield)] <- 0
 
     # convert age and born to numeric class
     final_table_outfield[ , 7:ncol(final_table_outfield)] <- sapply(
