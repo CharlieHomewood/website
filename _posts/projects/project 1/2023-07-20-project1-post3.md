@@ -11,8 +11,6 @@ Hello! In the <a id="otherpage-link" href="{{site.baseurl}}/projects/project1/20
 
 Let's get started!
 
-## Separate GKs from outfield players
-
 Now, as mentioned, we left off in the last post by creating an object called "tables". This object is a list of all the tables we collected from <a id="text-link" href="https://fbref.com/en/">fbref</a>. In football, goalkeepers have a unique role on the pitch and this uniqueness is reflected by the various metrics used to measure goalkeepers. We currently have two tables in our "tables" list that are exclusively for goalkeepers. Since goalkeepers are a subset of all football players, these tables have less rows than the other more general stats tables. As such, we're going to start by taking these goalkeeper-exclusive tables out of the "tables" list and putting them inside a new list - "gk_tables".
 
 <div id="code-snippet-container">
