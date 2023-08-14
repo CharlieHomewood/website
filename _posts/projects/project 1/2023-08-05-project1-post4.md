@@ -18,17 +18,13 @@ Now, let's move on with creating percentiles!
  
     if (!require(tidyverse)) {
         install.packages("tidyverse", dependencies = TRUE); require(tidyverse)    
-    }
-
-    if (!require(rvest)) {
-        install.packages("rvest", dependencies = TRUE); require(rvest)
-    }     
+    }  
  
 {% endhighlight %}
 <p id="code-snippet-caption"> Fig 1: Load packages </p>
 </div>
 
-Since this section of the project is being conducted using a new R script, we have to load our packages again.
+Since this section of the project is being conducted using a new R script, we have to load our packages again. This time however, we only need the *tidyverse*
 
 <div id="code-snippet-container">
 {% highlight r %}
