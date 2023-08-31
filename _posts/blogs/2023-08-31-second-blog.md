@@ -1,0 +1,24 @@
+---
+layout: post
+title: "Project Updates: My Plans Moving Forward"
+category: blog
+permalink: blog/:year/:month/:day
+---
+
+Hello! It's been a few weeks since I've last added new content to the website and so I thought it would be a good idea to talk about where I'm at with my current analysis project and what my next steps might be. 
+
+Currently, I'm working on a project titled <a id="otherpage-link" href="{{site.baseurl}}/projects/project1">"Making percentile radars"</a>, where I've outlined my approach to web-scraping and data pre-processing using the R statistical programming language. I've really enjoyed setting up the data set for this project, but I've paused this project for a moment, and for good reason. Since I am taking live data from <a id="text-link" href="https://fbref.com/en/">fbref.com</a> and using it in this project, that means that because the new men's football season has now begun, there's currently not enough data for me to actually create anything worth while to look at and analyse. Given this is the case, I'm planning on changing the approach to this project slightly.
+
+Rather than having an up-to-date, live percentile radar dashboard, I'm instead going to create a dashboard using a snapshot of the data from <a id="text-link" href="https://fbref.com/en/">fbref.com</a> at regular intervals throughout the season. I think producing a dashboard for the beginning of each transfer window throughout the season would be a better approach to take. So for example, the January transfer window for this current season opens on 1st January 2024 - having an analysis dashboard to review the performances of players at the beginning of the window would both enable a decent sample of data to be collected (~18-20 matches) and would co-incide with a period of the season where assessing player performance to decide on which transfers would be best for each team to make is on everyone's (mine included) minds. So that's the plan, rather than the data being available live, the first iteration of the percentile radar dashboard would hopefully be available over the Christmas holiday period. This dashboard would therefore also be updated at the end of the season so that users can evaluate the performance of players across the whole season. 
+
+Ideally, I would also want each iteration of the dashboard to still be available after updates so that users can go back and review previous seasons, but we'll see how the project progresses. Right now, the aim is to have a January transfer window dashboard. I'll still be working on this project in between dashboard updates (I need to create the dashboard after all), so expect to still see posts for the <a id="otherpage-link" href="{{site.baseurl}}/projects/project1">Making percentile radars</a> project until the end of the year. 
+
+So given that I've now stretched out the timeline on the <a id="otherpage-link" href="{{site.baseurl}}/projects/project1">Making percentile radars</a> project, I want to work on projects that are more short-term. Nothing overly ambitious or time-consuming, but still enabling me to trying something new and learn. I've been fortunate enough to do an internship with a marketing analytics company during August, and have been exposed to new analytic approaches that I'd only heard of in passing before hand. I've wanted to have a go at machine learning for a while, so towards the end of this internship, I've started to begin working on a machine learning project. I've also wanted to expand my coding skills, and so rather than using R as I am with my <a id="otherpage-link" href="{{site.baseurl}}/projects/project1">Making percentile radars</a> project, I want to instead use Python for this ML project. I'm also venturing beyond analysing football data, but still sticking within the world of sport - I plan to use Formula 1 data instead. The specific direction for this ML project is still something I'm thinking about, and right now my main focus in just on acquiring the right data for me to actually use. 
+
+So this is broadly my plan for my "recreational" analysis projects: have my <a id="otherpage-link" href="{{site.baseurl}}/projects/project1">Making percentile radars</a> project be a more long term but ambitious project which then opens up some more time for me to work on smaller, short-term projects. 
+
+Hopefully this interests you, I plan to make my first post for the F1 Machine Learning project some time during September, but I'm not committing to any specific timescales.
+
+Be sure to have a look at what I've currently worked on so far, and watch this space for more...
+
+Thank you!
