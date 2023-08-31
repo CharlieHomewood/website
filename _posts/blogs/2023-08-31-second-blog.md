@@ -17,7 +17,7 @@ So given that I've now stretched out the timeline on the <a id="otherpage-link" 
 
 So this is broadly my plan for my "recreational" analysis projects: have my <a id="otherpage-link" href="{{site.baseurl}}/projects/project1">Making percentile radars</a> project be a more long term but ambitious project which then opens up some more time for me to work on smaller, short-term projects. 
 
-Hopefully this interests you, I plan to make my first post for the F1 Machine Learning project some time during September, but I'm not committing to any specific timescales.
+Hopefully this interests you, I plan to make my first post for the <a id="otherpage-link" href="{{site.baseurl}}/projects/project2">F1 Machine Learning</a> project some time during September, but I'm not committing to any specific timescales.
 
 Be sure to have a look at what I've currently worked on so far, and watch this space for more...
 
