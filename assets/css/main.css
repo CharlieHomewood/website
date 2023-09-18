@@ -93,23 +93,22 @@
   font-size: 3rem;
   text-decoration: none;
   text-align: center;
-  padding-block: 1rem;
-  padding-inline: 2rem;
+  margin-block: 1rem;
+  margin-inline: 2rem;
 }
 
 #header-nav-container {
-  height: 100%;
-  width: fit-content;
+  margin-block: 1rem;
+  width: 30rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 #header-nav-link {
   height: 100%;
   font-size: 1.25rem;
   text-decoration: none;
-  padding-block: 1rem;
-  padding-inline: 2rem;
   transition: 0.4s ease;
 }
 
@@ -118,7 +117,7 @@
 }
 
 #header-nav-container:hover #header-nav-link:not(:hover) {
-  opacity: 0.3;
+  opacity: 0.4;
   transform: translateY(0rem);
 }
 
@@ -419,27 +418,18 @@
 /* pages/about styling */
 
 #about-body {
-  height: fit-content;
+  height: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  font-family: Monaco, monospace;
-  width: 80%;
+  justify-content: left;
+  align-items: flex-start;
+  font-size: clamp(1rem, -0.875rem + 8.333vw, 1.75rem);
 }
 
-#about-container {
-  justify-content: space-between;
-  height: fit-content;
-}
-
-#about-content {
-  font-size: clamp(1rem, -0.875rem + 8.333vw, 1.5rem);
-  height: fit-content;
-}
-
-#about-content p {
-  margin-block: 1.5rem;
-  text-align: left;
+#about-body a {
+  text-decoration: none;
+  color: rgba(13, 130, 63, 255);
 }
 
 /* posts/projects and blogs */

@@ -7,8 +7,6 @@ var currentURL = window.location.href;
 
 // DEFINE QUERYSELECTORALL VARIABLES //
 var pageBody = document.querySelectorAll("#default-body");
-var pageSiteurl = document.querySelectorAll("#header-siteurl");
-var pageNavlink = document.querySelectorAll("#header-nav-link");
 var pageH1 = document.querySelectorAll("#header-title");
 var blogItem = document.querySelectorAll("#blog-item");
 var projectsPageItem = document.querySelectorAll("#projectpage-item");
@@ -17,25 +15,27 @@ var footerSocialLink = document.querySelectorAll("#footer-social-link");
 var footerCopyright = document.querySelectorAll("#footer-copyright");
 var otherpageLink = document.querySelectorAll("#otherpage-link");
 var anchor = document.querySelectorAll("#text-link");
-var resourcesLink = document.querySelectorAll("#resources-link");
+var headerNavbar = document.querySelectorAll("#header-navbar");
+var headerNavContainer = document.querySelectorAll("#header-nav-container");
+var headerNavLink = document.querySelectorAll("#header-nav-link");
+var headerSiteurl = document.querySelectorAll("#header-siteurl");
 
 // DEFINE PAGE COLORS //
 
 // PROJECTS //
-var projectsBackgroundColor = "background-color: rgba(255, 199, 199, 255)";
+var projectsBackgroundColor = "background-color: rgba(255, 230, 230, 255)";
 var projectsFontColor = "color: rgba(156, 44, 45, 255)";
+var projectsHeaderNavbarBackgroundColor = "background-color: rgba(255, 150, 150, 255)";
 
 // ABOUT //
-var aboutBackgroundColor = "background-color: rgba(199, 255, 222, 255)";
+var aboutBackgroundColor = "background-color: rgba(220, 255, 230, 255)";
 var aboutFontColor = "color: rgba(13, 130, 63, 255)";
+var aboutHeaderNavbarBackgroundColor = "background-color: rgba(150, 255, 170, 255)";
 
 // BLOG //
-var blogBackgroundColor = "background-color: rgba(220, 199, 255, 255)";
+var blogBackgroundColor = "background-color: rgba(235, 224, 255, 255)";
 var blogFontColor = "color: rgba(69, 39, 117, 255)";
-
-// Resources //
-var resourcesBackgroundColor = "background-color: rgba(199, 228, 255, 255)";
-var resourcesFontColor = "color: rgba(39, 79, 117, 255)";
+var blogHeaderNavbarBackgroundColor = "background-color: rgba(220, 150, 255, 255)";
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -43,16 +43,24 @@ if (currentURL.includes("projects")) {
 
   // PROJECTS PAGE //
 
+  headerNavbar.forEach((headerNavbar) => {
+    headerNavbar.style.cssText = `${projectsHeaderNavbarBackgroundColor}; ${projectsFontColor}`;
+  });
+
+  headerNavContainer.forEach((headerNavContainer) => {
+    headerNavContainer.style.cssText = `${projectsHeaderNavbarBackgroundColor}; ${projectsFontColor}`;
+  });
+
+  headerNavLink.forEach((headerNavLink) => {
+    headerNavLink.style.cssText = `${projectsHeaderNavbarBackgroundColor}; ${projectsFontColor}`;
+  });
+
+  headerSiteurl.forEach((headerSiteurl) => {
+    headerSiteurl.style.cssText = `${projectsHeaderNavbarBackgroundColor}; ${projectsFontColor}`;
+  });
+
   pageBody.forEach((pageBody) => {
     pageBody.style.cssText = `${projectsBackgroundColor}; ${projectsFontColor}`;
-  });
-
-  pageSiteurl.forEach((pageSiteurl) => {
-    pageSiteurl.style.cssText = `${projectsBackgroundColor}; ${projectsFontColor}`;
-  });
-
-  pageNavlink.forEach((pageNavlink) => {
-    pageNavlink.style.cssText = `${projectsBackgroundColor}; ${projectsFontColor}`;
   });
 
   pageH1.forEach((pageH1) => {
@@ -88,6 +96,22 @@ if (currentURL.includes("projects")) {
 
   // ABOUT PAGE //  
 
+  headerNavbar.forEach((headerNavbar) => {
+    headerNavbar.style.cssText = `${aboutHeaderNavbarBackgroundColor}; ${aboutFontColor}`;
+  });
+
+  headerNavContainer.forEach((headerNavContainer) => {
+    headerNavContainer.style.cssText = `${aboutHeaderNavbarBackgroundColor}; ${aboutFontColor}`;
+  });
+
+  headerNavLink.forEach((headerNavLink) => {
+    headerNavLink.style.cssText = `${aboutHeaderNavbarBackgroundColor}; ${aboutFontColor}`;
+  });
+
+  headerSiteurl.forEach((headerSiteurl) => {
+    headerSiteurl.style.cssText = `${aboutHeaderNavbarBackgroundColor}; ${aboutFontColor}`;
+  });
+  
   pageBody.forEach((pageBody) => {
     pageBody.style.cssText = `${aboutBackgroundColor}; ${aboutFontColor}`;
   });
@@ -122,6 +146,24 @@ if (currentURL.includes("projects")) {
   });
 
 } else if (currentURL.includes("blog")) {
+
+  // BLOG PAGE // 
+
+  headerNavbar.forEach((headerNavbar) => {
+    headerNavbar.style.cssText = `${blogHeaderNavbarBackgroundColor}; ${blogFontColor}`;
+  });
+
+  headerNavContainer.forEach((headerNavContainer) => {
+    headerNavContainer.style.cssText = `${blogHeaderNavbarBackgroundColor}; ${blogFontColor}`;
+  });
+
+  headerNavLink.forEach((headerNavLink) => {
+    headerNavLink.style.cssText = `${blogHeaderNavbarBackgroundColor}; ${blogFontColor}`;
+  });
+
+  headerSiteurl.forEach((headerSiteurl) => {
+    headerSiteurl.style.cssText = `${blogHeaderNavbarBackgroundColor}; ${blogFontColor}`;
+  });
 
   pageBody.forEach((pageBody) => {
     pageBody.style.cssText = `${blogBackgroundColor}; ${blogFontColor}`;
@@ -160,47 +202,4 @@ if (currentURL.includes("projects")) {
     anchor.target = "_blank";
   });
 
-} else if (currentURL.includes("resources")) {
-
-  pageBody.forEach((pageBody) => {
-    pageBody.style.cssText = `${resourcesBackgroundColor}; ${resourcesFontColor}`;
-  });
-
-  pageSiteurl.forEach((pageSiteurl) => {
-    pageSiteurl.style.cssText = `${resourcesBackgroundColor}; ${resourcesFontColor}`;
-  });
-
-  pageNavlink.forEach((pageNavlink) => {
-    pageNavlink.style.cssText = `${resourcesBackgroundColor}; ${resourcesFontColor}`;
-  });
-
-  pageH1.forEach((pageH1) => {
-    pageH1.style.cssText = `${resourcesBackgroundColor}; ${resourcesFontColor}`;
-  });
-
-  blogItem.forEach((blogItem) => {
-    blogItem.style.cssText = `${resourcesBackgroundColor}; ${resourcesFontColor}`;
-  });
-
-  footerSocialLink.forEach((footerSocialLink) => {
-    footerSocialLink.style.cssText = `${resourcesBackgroundColor}; ${resourcesFontColor}`;
-  });
-
-  footerCopyright.forEach((footerCopyright) => {
-    footerCopyright.style.cssText = `${resourcesBackgroundColor}; ${resourcesFontColor}`;
-  });
-
-  otherpageLink.forEach((otherpageLink) => {
-    otherpageLink.style.cssText = `${resourcesBackgroundColor}; ${resourcesFontColor}`;
-  });
-
-  anchor.forEach((anchor) => {
-    anchor.style.cssText = `${resourcesBackgroundColor}; ${resourcesFontColor}`;
-    anchor.target = "_blank";
-  });
-
-  resourcesLink.forEach((resourcesLink) => {
-    resourcesLink.style.cssText = `${resourcesBackgroundColor}; ${resourcesFontColor}`;
-  });
-
-}
+} 
