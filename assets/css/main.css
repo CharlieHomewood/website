@@ -430,10 +430,6 @@
 
 /* posts/projects and blogs */
 
-a:link {
-  color: inherit;
-}
-
 #centered-image {
   display: inline-flex;
   flex-direction: column;
@@ -511,3 +507,8 @@ code.language-r #text {
 #text-link:hover {
   text-decoration: underline;
 }
+
+a:link, a:hover, a:visited, a:active {
+  color: inherit;
+}
+
