@@ -297,6 +297,7 @@
 #blog-title {
   margin: 0;
   font-size: clamp(1.5rem, -0.875rem + 8.333vw, 2rem);
+  text-decoration: none;
 }
 
 #blog-date {
@@ -427,12 +428,11 @@
   font-size: clamp(1rem, -0.875rem + 8.333vw, 1.75rem);
 }
 
-#about-body a {
-  text-decoration: none;
-  color: rgba(13, 130, 63, 255);
-}
-
 /* posts/projects and blogs */
+
+a:link {
+  color: inherit;
+}
 
 #centered-image {
   display: inline-flex;
