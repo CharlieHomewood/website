@@ -30,10 +30,12 @@ Since this section of the project is being conducted using a new R script, we ha
 {% highlight r %}
  
     final_table_outfield <- final_table_outfield %>%    
-        filter(Min >= 450)
+        filter(Min >= 450) %>% 
+        as.data.frame() # object was not actually a data frame at this point
 
     final_table_gks <- final_table_gks %>% 
-        filter(Min >= 450)  
+        filter(Min >= 450)  %>% 
+        as.data.frame() # object was not actually a data frame at this point
     
 {% endhighlight %}
 <p id="code-snippet-caption"> Fig 2: Filter out those who played less than 450 mins </p>
@@ -45,7 +47,7 @@ We start by filtering our those players who played less than 450 minutes. This i
 {% highlight r %}
  
     final_table_outfield_per90 <- final_table_outfield %>% 
-        select(-id, -Born, -MP, -Starts) %>%    
+        select(-contains("90"), -id, -Born, -MP, -Starts) %>% 
         mutate(Min_calc = Min) %>% 
         relocate(Min_calc) %>% 
         mutate(Min = as.character(Min)) %>% 
@@ -54,13 +56,18 @@ We start by filtering our those players who played less than 450 minutes. This i
         mutate(Min = as.numeric(Min))
 
     final_table_gks_per90 <- final_table_gks %>% 
-        select(-id, -Born, -MP, -Starts) %>% 
+        select(-contains("90"), -id, -Born, -MP, -Starts) %>% 
         mutate(Min_calc = Min) %>% 
         relocate(Min_calc) %>% 
         mutate(Min = as.character(Min)) %>% 
         mutate(across(where(is.numeric) & !contains(c("%", "90")), ~(. / Min_calc) * 90)) %>% 
         select(-Min_calc) %>% 
-        mutate(Min = as.numeric(Min)) 
+        mutate(Min = as.numeric(Min))
+
+    final_table_gks_per90 <- cbind(
+        final_table_gks_per90, 
+        select(final_table_gks, "PSxG_mins_GoalsAgainst_per_90")
+        )
     
 {% endhighlight %}
 <p id="code-snippet-caption"> Fig 3: Create per 90 stats </p>
