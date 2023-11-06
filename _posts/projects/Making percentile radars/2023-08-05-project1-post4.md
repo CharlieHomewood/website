@@ -49,7 +49,7 @@ We start by filtering our those players who played less than 450 minutes. This i
         mutate(Min_calc = Min) %>% 
         relocate(Min_calc) %>% 
         mutate(Min = as.character(Min)) %>% 
-        mutate(across(where(is.numeric), ~(. / Min_calc) * 90)) %>% 
+        mutate(across(where(is.numeric) & !matches("%"), ~(. / Min_calc) * 90)) %>% 
         select(-Min_calc) %>% 
         mutate(Min = as.numeric(Min))
 
@@ -58,7 +58,7 @@ We start by filtering our those players who played less than 450 minutes. This i
         mutate(Min_calc = Min) %>% 
         relocate(Min_calc) %>% 
         mutate(Min = as.character(Min)) %>% 
-        mutate(across(where(is.numeric), ~(. / Min_calc) * 90)) %>% 
+        mutate(across(where(is.numeric) & !matches("%"), ~(. / Min_calc) * 90)) %>% 
         select(-Min_calc) %>% 
         mutate(Min = as.numeric(Min)) 
     
@@ -68,7 +68,7 @@ We start by filtering our those players who played less than 450 minutes. This i
 
 Now we have excluded players who played less than 450 minutes, we can now convert all our variables into per 90 stats, in order to control for the number of minutes played (discussed in a previous post). 
 
-Before we calculate our percentiles, we should really compare players against those who play in the same (or at least similar) position. For example, what we would consider a "good" level of Goals per 90 for a striker is going to be higher than what we would consider "good" for a defender. If we did not split by position before calculating percentiles, defenders who are exceptional goalscorers would go missing as they would be compared to strikers and attacking players who are going to score more simply because of their position on the pitch. So let's start by spliting our data by position.
+Before we calculate our percentiles, we should really compare players against those who play in the same (or at least similar) position. For example, what we would consider a "good" level of Goals per 90 for a striker is going to be higher than what we would consider "good" for a defender. If we did not split by position before calculating percentiles, defenders who are exceptional goalscorers would go missing as they would be compared to strikers and attacking players who are going to score more simply because of their position on the pitch. So let's start by splitting our data by position.
 
 <div id="code-snippet-container">
 {% highlight r %}
