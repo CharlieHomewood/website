@@ -45,7 +45,7 @@ We start by filtering our those players who played less than 450 minutes. This i
 {% highlight r %}
  
     final_table_outfield_per90 <- final_table_outfield %>% 
-        select(-contains("90"), -id, -Born, -MP, -Starts) %>%    
+        select(-id, -Born, -MP, -Starts) %>%    
         mutate(Min_calc = Min) %>% 
         relocate(Min_calc) %>% 
         mutate(Min = as.character(Min)) %>% 
@@ -54,7 +54,7 @@ We start by filtering our those players who played less than 450 minutes. This i
         mutate(Min = as.numeric(Min))
 
     final_table_gks_per90 <- final_table_gks %>% 
-        select(-contains("90"), -id, -Born, -MP, -Starts) %>% 
+        select(-id, -Born, -MP, -Starts) %>% 
         mutate(Min_calc = Min) %>% 
         relocate(Min_calc) %>% 
         mutate(Min = as.character(Min)) %>% 
