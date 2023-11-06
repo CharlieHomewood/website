@@ -45,20 +45,20 @@ We start by filtering our those players who played less than 450 minutes. This i
 {% highlight r %}
  
     final_table_outfield_per90 <- final_table_outfield %>% 
-        select(-contains("_per_90"), -contains("per 90"), -id, -Born, -MP, -Starts, -"90s") %>%    
+        select(-contains("90"), -id, -Born, -MP, -Starts) %>%    
         mutate(Min_calc = Min) %>% 
         relocate(Min_calc) %>% 
         mutate(Min = as.character(Min)) %>% 
-        mutate(across(where(is.numeric) & !matches("%"), ~(. / Min_calc) * 90)) %>% 
+        mutate(across(where(is.numeric) & !contains(c("%", "90")), ~(. / Min_calc) * 90)) %>% 
         select(-Min_calc) %>% 
         mutate(Min = as.numeric(Min))
 
     final_table_gks_per90 <- final_table_gks %>% 
-        select(-contains("_per_90"), -contains("per 90"), -id, -Born, -MP, -Starts, -"90s") %>% 
+        select(-contains("90"), -id, -Born, -MP, -Starts) %>% 
         mutate(Min_calc = Min) %>% 
         relocate(Min_calc) %>% 
         mutate(Min = as.character(Min)) %>% 
-        mutate(across(where(is.numeric) & !matches("%"), ~(. / Min_calc) * 90)) %>% 
+        mutate(across(where(is.numeric) & !contains(c("%", "90")), ~(. / Min_calc) * 90)) %>% 
         select(-Min_calc) %>% 
         mutate(Min = as.numeric(Min)) 
     
