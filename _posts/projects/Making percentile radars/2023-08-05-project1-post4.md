@@ -51,8 +51,12 @@ We start by filtering our those players who played less than 450 minutes. This i
         mutate(Min_calc = Min) %>% 
         relocate(Min_calc) %>% 
         mutate(Min = as.character(Min)) %>% 
-        mutate(across(where(is.numeric) & !contains(c("%", "90", "Age")), 
-        ~(. / Min_calc) * 90)) %>% 
+        mutate(across(where(is.numeric) & !contains(
+            c(
+            "%", "90", "Age", "_per_", "MatchesCompleted", 
+            "MatchesStartedAsSub", "NotUsedSub"
+            )
+        ), ~(. / Min_calc) * 90)) %>% 
         select(-Min_calc) %>% 
         mutate(Min = as.numeric(Min))
 
@@ -61,8 +65,12 @@ We start by filtering our those players who played less than 450 minutes. This i
         mutate(Min_calc = Min) %>% 
         relocate(Min_calc) %>% 
         mutate(Min = as.character(Min)) %>% 
-        mutate(across(where(is.numeric) & !contains(c("%", "90", "Age")) , 
-        ~(. / Min_calc) * 90)) %>% 
+        mutate(across(where(is.numeric) & !contains(
+            c(
+            "%", "90", "Age", "_per_", "MatchesCompleted", 
+            "MatchesStartedAsSub", "NotUsedSub"
+            )
+        ), ~(. / Min_calc) * 90)) %>% 
         select(-Min_calc) %>% 
         mutate(Min = as.numeric(Min))
 
