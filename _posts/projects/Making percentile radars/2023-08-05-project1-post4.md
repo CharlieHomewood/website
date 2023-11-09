@@ -86,33 +86,42 @@ Before we calculate our percentiles, we should really compare players against th
         filter(grepl("DF", Pos)) 
 
     table_DF <- table_DF %>%
-        rename_with(~paste0(., "_per90")) %>% 
+        rename_if(
+            !str_detect(names(.), "%"),
+            ~paste0(., "_per90")
+        ) %>% 
         rename_at(
             .vars = vars(1:7),
-            .funs = funs(gsub("_per90", "", .))    
-            )
+            .funs = funs(gsub("_per90", "", .))
+        )
 
     table_MF <- final_table_outfield_per90 %>% 
         filter(grepl("MF", Pos)) %>% 
         rename_with(~paste0(., "_per90"))
 
     table_MF <- table_MF %>%
-        rename_with(~paste0(., "_per90")) %>% 
+        rename_if(
+            !str_detect(names(.), "%"),
+            ~paste0(., "_per90")
+        ) %>% 
         rename_at(
             .vars = vars(1:7),
             .funs = funs(gsub("_per90", "", .))
-            )
+        )
 
     table_FW <- final_table_outfield_per90 %>% 
         filter(grepl("FW", Pos)) %>% 
         rename_with(~paste0(., "_per90"))
 
     table_FW <- table_FW %>%
-        rename_with(~paste0(., "_per90")) %>% 
+        rename_if(
+            !str_detect(names(.), "%"),
+            ~paste0(., "_per90")
+        ) %>% 
         rename_at(
             .vars = vars(1:7),
             .funs = funs(gsub("_per90", "", .))
-            )
+        )
     
 {% endhighlight %}
 <p id="code-snippet-caption"> Fig 4: Split data by position category </p>
