@@ -91,7 +91,7 @@ We now have all the urls we need. We can now begin collecting our data from the 
 
 First, we store an empty list - list() - inside an object called "tables". This "tables" object is where all the data frames we are going to scrape from fbref will be stored.
 
-The for loop uses the "urls" object we created earlier. For each url in our "urls" object, we peform the following process, one-by-one, until all the urls have been looped through:
+The for loop uses the "urls" object we created earlier. For each url in our "urls" object, we perform the following process, one-by-one, until all the urls have been looped through:
  - Create a temporary object called "name". Store inside this object the 6th subdirectory of the url. This is unique for each table in our "urls" list and serves as a name for the table.
  - Take our empty "tables" list and nest the name inside it. Then under this name in our list we add the data:
      - Read the html code from the url - read_html()

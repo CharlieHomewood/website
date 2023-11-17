@@ -183,7 +183,7 @@ Next, let's calculate our percentiles for each position category. First we'll cr
 <p id="code-snippet-caption"> Fig 5: Create percentile data frames </p>
 </div>
 
-Laslty, we're going to loop through each of these data frames, split by position category, and calculate percentiles for each column (where calculation was possible). Then, these calculations are combined with the per 90 data we calculated near to the start. 
+Lastly, we're going to loop through each of these data frames, split by position category, and calculate percentiles for each column (where calculation was possible). Then, these calculations are combined with the per 90 data we calculated near to the start. 
 
 <div id="code-snippet-container">
 {% highlight r %}
