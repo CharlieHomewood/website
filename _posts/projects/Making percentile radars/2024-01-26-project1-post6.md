@@ -13,6 +13,10 @@ This whole project has been a lot of fun and it's fitting that the most enjoyabl
 
 ## The Dashboard
 
+<figure id="centered-image">
+    <img src="{{site.baseurl}}/assets/images/makingpercentileradars_dashboard_example_haaland.png" width = "80%">
+</figure>
+
 So the whole purpose of this project was to create and interactive dashboard to display percentile stats for male football players from Europe's Big 5 leagues, using data from <a id="text-link" href="https://fbref.com/en/">fbref</a>. Let's take a look at how I build this dashboard!
 
 So to begin, Shiny applications, at their most basic, need two arguments in order to function: the **UI** to control the layout of elements on the dashboard and the **Server** logic to control interactive functions required to make the dashboard feel alive. Now, the code for this dashboard is quite long and so to avoid cluttering this post with 100s of lines of code, I'll simply describe each section. The process begins with creating an app script (app.R).
@@ -43,7 +47,7 @@ The last part of the server logic is the radar itself. A **renderPlot()** functi
 
 ## Final remarks
 
-So that's it! ...for now at least. I have had a lot of fun working on this project and feel it has been a great experience for me to learn some new skills in working with data. As a football fan and data enthusiast, I also just get a kind of intrinsic enjoyment in exploring the sport I love using tools of a data analyst. I've always loved exploring visualisations in football from journalists and even video games such as Football Manager and gaining new insights into the sport from them. Being able to look at the sport on a more global level or delve deep into the performance of a specific player through data is incredibly interesting and fun for me - I'm sure this won't be the last football-related data project I work on :)
+So that's it! ...for now at least. I have had a lot of fun working on this project and feel it has been a great experience for me to learn some new skills in working with data. As a football fan and data enthusiast, I also just get a kind of intrinsic enjoyment in exploring the sport I love using tools of a data analyst. I've always loved exploring visualisations in football from journalists and even video games such as Football Manager and gaining new insights into the sport from them. Being able to look at the sport on a more global level or delve deep into the performance of a specific player through data is incredibly interesting and fun for me - I'm sure this won't be the last football-related data project I work on.
 
 Passion aside for a moment, I do also want to reflect on how I feel this project helped me develop as a data analyst. Learning Shiny was a challenge but I now feel much more comfortable with the approach and really look forward to developing my understanding of the package in the future to create more complex dashboards and provide as much insight as possible for viewers. As for web scraping, the process is a lot simpler than I expected and it has opened up a world of potential to me - I'm sure it will become a core skill of mine moving forward and I am keen to utilise it along side more interesting applications such as automation. As for skills I had some experience with already, I feel integrating slightly more complex approaches to coding in order to clean and prepare data - such as utilising functions and list objects - helped me become more aware of more efficient and scalable ways to process data, something I feel will be important as I progress as a data analyst. Overall, I think not only was this project a lot of fun but also enabled me to build upon my experience from university and I'm only more excited to continue that development for it.
 

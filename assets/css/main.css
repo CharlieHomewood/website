@@ -439,11 +439,6 @@
   margin: 0;
 }
 
-#centered-image img {
-  width: clamp(10rem, 100%, 20rem);
-  height: 25%;
-}
-
 #centered-image-caption {
   margin-top: clamp(0.25rem, -0.875rem + 8.333vw, 0.75rem);
   font-style: italic;
