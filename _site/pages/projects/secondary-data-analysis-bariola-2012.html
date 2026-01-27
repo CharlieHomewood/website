@@ -32,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../assets/me.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -74,11 +75,15 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Secondary Data Analysis of Bariola (2012) – Charlie Homewood">
 <meta property="og:description" content="My submitted secondary data analysis report of Bariola (2012), in completion of the Discovering Statistics (C8552) module.">
-<meta property="og:image" content="../../assets/thumbnails/sda-bariola.png">
+<meta property="og:image" content="https://charliehomewood.com/assets/thumbnails/sda-bariola.png">
 <meta property="og:site_name" content="Charlie Homewood">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="Secondary Data Analysis of Bariola (2012) – Charlie Homewood">
 <meta name="twitter:description" content="My submitted secondary data analysis report of Bariola (2012), in completion of the Discovering Statistics (C8552) module.">
-<meta name="twitter:image" content="../../assets/thumbnails/sda-bariola.png">
+<meta name="twitter:image" content="https://charliehomewood.com/assets/thumbnails/sda-bariola.png">
+<meta name="twitter:image-height" content="960">
+<meta name="twitter:image-width" content="1344">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -108,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Knowledge Base</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv.qmd"> 
+    <a class="nav-link" href="../../pages/cv.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -408,7 +413,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/charliehomewood\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/index.html",
-    "items": []
-  },
-  {
     "listing": "/pages/projects.html",
     "items": [
       "/pages/projects/mcs-project.html",
@@ -14,9 +10,5 @@
       "/pages/projects/qqm-eda.html",
       "/pages/projects/secondary-data-analysis-bariola-2012.html"
     ]
-  },
-  {
-    "listing": "/pages/knowledge-base.html",
-    "items": []
   }
 ]
