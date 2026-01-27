@@ -1,0 +1,35 @@
+---
+image: "assets/me.png"
+---
+
+:::: {.columns}
+
+::: {.column}
+
+![]({{< meta image >}}){ width=75% }
+
+## Where You Can Find Me!
+
+[{{< fa brands github >}} GitHub](https://github.com/CharlieHomewood)
+
+[{{< fa brands linkedin >}} LinkedIn](https://www.linkedin.com/in/charliehomewood/)
+
+:::
+
+::: {.column}
+
+## Hello!
+
+I'm Charlie, a current MSc Data Science student at the University of Sussex. I am a passionate data scientist who enjoys using statistical inference and machine learning to explore interesting and important questions to provide valuable insights from data.
+
+Despite not really knowing much about data science before starting higher education, I quickly found myself drawn to experimental methodology, metascience and, of course, statistical analysis. I began coding in R as an undergraduate and have picked up Python and SQL along the way, working on numerous projects as part of my work, studies and beyond. Doing so has consistently confirmed to me that data science is the right fit for me.
+
+This website serves to showcase my journey as a data scientist, where I will document [projects](pages/projects.qmd) I work on that aim to challenge me to develop new skills. 
+
+I'm also keen to build a [data science knowledge base](pages/knowledge-base.qmd) and share it with anyone who is interested, both as an exercise in demonstrating my own understanding and to provide support to others in the manner that I have been supported in my learning process.
+
+If you find something here of interest, let me know! Thank you for stopping by!
+
+:::
+
+::::

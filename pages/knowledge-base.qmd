@@ -1,0 +1,13 @@
+---
+title: "Knowledge Base"
+---
+
+## [Enter the Knowledge Base!](https://charliehomewood.github.io/knowledge-base/)
+
+With this knowledge base, I want to document concepts in data science which I feel are important to graple with and gain an understanding of.
+
+I feel making public resources on such concepts will enable me to further develop my own understanding, and hopefully provide value to others who are as keen to learn as I am!
+
+I'm hosting an Obsidian vault, via Quartz and GitHub Pages, which contains individual notes on data science concepts. Think of it as a data science wikipedia, based on my own experience and understanding.
+
+If you do find something from this knowledge base to be useful, do let me know!

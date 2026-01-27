@@ -1,0 +1,33 @@
+project:
+  type: website
+
+website:
+  title: "Charlie Homewood"
+  navbar:
+    right:
+      - href: pages/projects.qmd
+        text: Projects
+      - href: pages/knowledge-base.qmd
+        text: Knowledge Base
+      - href: pages/cv.qmd
+        text: CV
+  page-footer: "Copyright 2026, Charlie Homewood" 
+  favicon: assets/me.png
+  site-url: https://charliehomewood.com
+  search:
+    type: textbox
+  back-to-top-navigation: true
+  twitter-card: true
+  open-graph: true
+
+language: 
+    search-text-placeholder: Search
+
+format:
+  html:
+    theme: 
+        light: flatly
+        dark: darkly
+    mainfont: spectral
+    css: styles.css
+    toc: true

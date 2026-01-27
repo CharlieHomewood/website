@@ -1,0 +1,25 @@
+---
+title: "Secondary Data Analysis of Bariola (2012)"
+date: 2021-11-10
+image: ../../assets/thumbnails/sda-bariola.png
+categories: [University Project, R]
+description: |
+    My submitted secondary data analysis report of Bariola (2012), in completion of the Discovering Statistics (C8552) module.
+---
+
+During my 2nd year as a BSc Psychology with Economics student, I completed a secondary data analysis of research published by [Bariola et al. (2012)](https://link.springer.com/article/10.1007/s10826-011-9497-5) - an investigation of the relationship between child (*N* = 379) and parental (*N* = 565) [emotion regulation (ER)](https://www.jstor.org/stable/1166137?origin=crossref&seq=1), with a particular focus on expressive suppression (ES - the ability to control one's display of a currently felt emotion). ER was measured using the [Emotion Regulation Questionnaire](https://psycnet.apa.org/doiLanding?doi=10.1037%2Ft06463-000).
+
+Pertinent to this secondary analysis, the authors found some evidence that maternal expressive suppression significantly predicted child expressive suppression. This secondary analysis aimed to build upon this finding by evaluating whether a linear regression model with both parents' (mother and father) respective expressive suppression scores as predictors was a significantly better fit to the data than an a linear model with just maternal ES as a predictor. 
+
+Below is the full report (an html-rendered R Markdown file) I submitted for this assignment, where I use R to construct the two linear models, compare them via ANOVA, and then test the "superior" model's conformity to the core assumptions of linear regression. 
+
+**This project was my very first data science project**, my first project in R, and my first exposure to linear regression, ANOVA and the crucial notion of model assumptions. Whilst fairly short and straightforward, I feel this project was an ideal introduction to these core data science concepts, and to the R language as well and helped me to build a strong foundation to develop further as a data scientist.
+
+Hope you find it interesting!
+
+<iframe 
+    src="https://charliehomewood.github.io/DS-Secondary_data_analysis/tap_worksheet.html"
+    width="100%"
+    height="600"
+>
+</iframe>

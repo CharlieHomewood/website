@@ -1,0 +1,25 @@
+---
+title: "Exploratory Factor Analysis of Self-Esteem Questionnaire Responses"
+date: 2022-03-20
+image: ../../assets/thumbnails/qqm-eda.png
+categories: [University Project, R]
+description: |
+    My submitted report, performing an Exploratory Factor Analysis on questionnaire repsonses, in completion of the Quantitative and Qualitative Methods (C8300) module.
+execute:
+    eval: false
+---
+
+The following is a report I produced during my 2nd year as a BSc Psychology with Economics student. This report outlines an exploratory factor analysis (EFA) I conducted on responses to a self-esteem questionnaire my cohort and I created. In total, we received 675 responses, reducing to 642 after excluding respondents who were either themselves students on the course, under 18 or had missing data. 
+
+The overall aim was to develop a novel self-esteem measurement scale by using EFA to extract latent factors (i.e. different underlying types) relating to specific domains of self-esteem (e.g. our sense of self-esteem as it relates to particular areas of life, like our appearance, social life, academic achievement etc.). 
+
+Such emergent factors from questionnaire responses, provided they were statistically robust, could build upon previous self-esteem measurement tools by revealing new domains that have previously not been captured in traditional self-esteem questionnaires. This would help clinicians to more accurately assess an individual's sense of self-esteem, aiding in diagnoses of mental illnesses or supporting them in understanding clients' state of mind.
+
+In the report, I detail key analysis decisions involved with performing this EFA, making reference to recommendations made within the academic literature for the best EFA practices. The appendix also includes the full output of the R Markdown file I used for this project.
+
+<iframe
+    src="https://charliehomewood.github.io/QQM-EFA/QQM_Report.html"
+    width="100%"
+    height="800"
+    style="border: none;">
+</iframe>

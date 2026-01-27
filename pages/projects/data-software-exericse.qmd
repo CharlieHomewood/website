@@ -1,0 +1,34 @@
+---
+title: "Data Analysis Techniques Software Exercise"
+date: 2024-12-06
+image: ../../assets/thumbnails/dat-software-exercise.png
+categories: [University Project, Python]
+description: |
+    My submitted 3-part Jupyter notebook in completion of the Data Analysis Techniques (890F3) module.
+---
+
+During my MSc Data Science course, I completed a software exercise as the main assignment for the [Data Analysis Techniques (890F3) module](https://www.sussex.ac.uk/study/modules/postgraduate/2024/98489-data-analysis-techniques). 
+
+The exercise, written in Python, mostly focuses on key data analysis techniques and their application in Physics. Of course, these methods also apply across numerous other domains. This was a challenging module, but really helped me revisit the fundamentals in a very rigorous way. I was able to gain a much greater understanding of the theoretical basis of these techniques and how to correctly interpret and apply them. 
+
+This exercise consisted of 3 parts:
+
+ 1. **Monte Carlo parameter estimation for muon decay**
+    - Use the transformation/inversion method to find an expression for the inverse CDF.
+    - Generate 1,000 $x$ values, where $x \sim p(x)$ and $\alpha$ = $-0.33$. Plot histogram.
+    - Use maximum likelihood and method of moments to estimate ($\alpha$) from the simulated data.
+ 2. **Polynomial regression model selection**
+    - Determine which order of polynomial best fits the data.
+    - Tabulate $\chi^{2}$, $\chi^{2}$ confidence level, AIC and BIC for each order of polynomial.
+    - Plot best fit model with the data.
+ 3. **Markov chain Monte Carlo parameter recovery with the galaxy stellar mass function**
+    - Use the transformation/inversion method to generate 1000 synthetic stellar masses, distributed according to the Schechter function.
+    - Plot histogram of generates stellar masses.
+    - Use the Affine Invariant Ensemble Sampler algorithm to recover model parameters.
+
+<iframe
+    src="https://nbviewer.org/github/CharlieHomewood/DAT_Software_Exercise/blob/main/software_exercise.ipynb"
+    width="100%"
+    height="800"
+    style="border: none;">
+</iframe>

@@ -1,0 +1,723 @@
+---
+title: "Monte Carlo Simulations Project Report"
+date: 2025-05-09
+image: ../../assets/thumbnails/empirical_vs_theoretical.png
+categories: [University Project, R]
+description: |
+    My submitted 3-part report in completion of the Monte Carlo Simulations (L7) (865G1) module.
+execute:
+    eval: false
+---
+
+The following outlines each part of this Monte Carlo simulations project report, submitted in completion of the [Monte Carlo Simulations (L7) (865G1)](https://www.sussex.ac.uk/study/modules/postgraduate/2024/98057-monte-carlo-simulations-l7) module. An initial description of the task for each part preceeds the R script I wrote in response to the problem.
+
+# Part 1 
+
+Part 1 involved pseudorandom number generation, assessing the generated sample fit to the theoretical distribution and comparing simple sampling to the importance sampling method in determining the expectation value of the distribution, and its associated uncertainty.
+
+```{r}
+# initialise values
+
+seed = 576
+n = 30000
+alpha = 3
+k = 1
+mu = 0
+
+# ensure plots folder is created
+if (!dir.exists("plots")) dir.create("plots")
+
+# define a function to ensure constraints mentioned in part 1 are held
+
+constraints = function(seed, n, alpha, k, mu) {
+    
+    # begin by assuming all constraints are met, then test them
+    constraints = TRUE
+    
+    # ensure all inputs are numeric, alpha & k are positive reals, and mu is real
+    
+    ### if any input is not a numeric value, return FALSE
+    if (!is.numeric(seed) || !is.numeric(n) || !is.numeric(alpha) || !is.numeric(k) || !is.numeric(mu)) {
+        constraints = FALSE
+        stop("All arguments must be numeric")
+    } 
+    ### if alpha or k are <= 0 OR infinite, return FALSE
+    if (alpha <= 0 || k <= 0 || !is.finite(alpha) || !is.finite(k)) {
+        constraints = FALSE
+        stop("alpha and k must be positive real numbers")
+    } 
+    if (!is.finite(mu)) {
+        constraints = FALSE
+        stop("mu must be a finite real number")
+    }
+    
+    return(constraints)
+    
+}
+
+# generate U ~ U[0,1]
+
+U = function(seed, n) {
+  set.seed(seed)
+  runif(n, min = 0, max = 1)
+}
+
+# define theoretical pdf, with equivalent parameters to the MC estimate
+
+pdf = function(x, alpha, k, mu) {
+    
+    # apply constraints logic
+    constraints(seed, n, alpha, k, mu)
+    
+    # define pdf as shown in Part 1 instructions
+    pdf = ifelse(
+        x >= mu, 
+        (alpha/k) * ((k-mu+x)/k)^(-alpha-1),
+        0
+    )
+
+    return(pdf)
+    
+} 
+
+# define cdf 
+
+cdf = function(x, alpha, k, mu) {
+  
+    # apply constraints logic
+    constraints(seed, n, alpha, k, mu)
+    
+    # using the cdf defined in eq. 1
+    ifelse(
+        x >= mu, 
+        1 - ((k - mu + x) / k)^-alpha, 
+        0
+    )
+  
+}
+
+# define quantile function
+
+inverse_cdf = function(seed, n, alpha, k, mu) {
+  
+    # apply constraints logic
+    constraints(seed, n, alpha, k, mu)
+    
+    # using the quantile function defined in eq. 2, with x = U
+    inv_cdf = k * (1/(1-U(seed, n)))^(1/alpha) - k + mu
+    return(inv_cdf)
+    
+}
+
+# define histogram plot function
+
+plot_hist = function() {
+    
+    hist(
+        x = inverse_cdf(seed, n, alpha, k, mu),
+        breaks = "Freedman-Diaconis", # h = 2 * (IQR(x) / n^(1/3))
+        freq = FALSE,
+        main = "",
+        cex = 2,
+        xlab = "x",
+        xlim = c(0, 3),
+        ylim = c(0, 3)
+    )
+    
+    curve(pdf(x, alpha, k, mu), from = 0, to = 5, col = "red", lwd = 2, add = TRUE)
+
+    legend(
+        "topright",                    
+        legend = expression(paste(f(x), ": ", alpha == 3, ", ", italic(k) == 1, ", ", mu == 0)), 
+        col = c("red"), 
+        lwd = 2, lty = 1, bty = "n", cex = 1.5
+    ) 
+    
+}
+
+# plot histogram with theoretical pdf
+png("plots/histogram.png", width = 8, height = 6, units = "in", res = 300)
+
+par(mar = c(4, 4, 1, 1))
+
+plot_hist()
+
+dev.off()
+
+# goodness-of-fit test, as a function of sample size: k-s test
+
+goodness_of_fit_test = function() {
+    
+    # initialise dataframe to store test results in. 
+    test_results = data.frame(
+        sample_size = numeric(),
+        statistic = numeric(),
+        p_value = numeric()
+    )
+    
+    # to avoid having each ks-test run on subsets of the same set of generated values from f(x), we need to change the seed each time we generate samples from inverse_cdf(). To do this, I am going to generate values using U(seed, n). Then, each of these values will be used as a seed for each KS test. This ensures that each KS test runs on independent samples, but is still reproducible as the seeds are generated using the global seed (i.e. 576).
+    
+    list_of_seeds = U(seed, n)
+    
+    # for each number between 1 and n, run the ks-test and store the sample size and p-value in the test_results dataframe
+    progress_bar = txtProgressBar(min = 1, max = n, style = 3)
+    print("Performing KS Tests...")
+    
+    for (i in 1:n) {
+        
+        if (i == 1 || i %% 50 == 0) {
+        
+            result = ks.test(
+                inverse_cdf(list_of_seeds[i], i, alpha, k, mu), 
+                function(x) cdf(x, alpha, k, mu)
+            )
+            
+            test_results = rbind(test_results, data.frame(
+                sample_size = i,
+                statistic = result$statistic,
+                p_value = result$p.value
+            ))
+            
+            setTxtProgressBar(progress_bar, i)
+        }
+        
+    }
+    
+    # plot the results on line graphs
+    
+    par(mfrow = c(1, 2))
+    
+    plot(
+        test_results$sample_size,
+        test_results$statistic,
+        type = "l", col = "darkorange", cex = 2,
+        main = "Test Statistic vs Sample size",
+        xlab = "Sample Size", xlim = c(1, n),
+        ylab = "Test Statistic", ylim = c(0, 1)
+    )
+    
+    plot(
+        test_results$sample_size,
+        test_results$p_value,
+        type = "l", col = "darkgreen", cex = 2,
+        main = expression(bold(bolditalic(p)*"-value vs Sample size")),
+        xlab = "Sample Size", xlim = c(1, n),
+        ylab = expression(italic(p)*"-value"), ylim = c(0, 1)
+    )
+    
+    # significance threshold = 0.05
+    abline(h = 0.05, col = "red", lty = 2, lwd = 5)
+    
+}
+
+png("plots/goodness_of_fit.png", width = 16, height = 8, units = "in", res = 300)
+
+par(mar = c(4, 4, 1, 1))
+
+goodness_of_fit_test()
+
+dev.off()
+
+# importance sampling
+
+## plot proposal distribution(s)
+
+proposal_plot = function() {
+    
+    plot(
+        0, type = "n", xlab = "X", ylab = "Density", 
+        xlim = c(0, 3), ylim = c(0, 3), cex = 2
+    )
+    
+    curve(pdf(x, alpha, k, mu), col = "black", lwd = 2, from = 0, to = 3, ylab = "Density")
+    curve(pdf(x, alpha = 4, k = 2, mu), col = "red", lwd = 2, from = 0, to = 3, add = TRUE)
+    
+    legend(
+        "topright",                    
+        legend = c(
+            expression(paste(f(x), ": ", alpha == 3, ", ", italic(k) == 1, ", ", mu == 0)), 
+            expression(paste(g(x), ": ", alpha == 4, ", ", italic(k) == 2, ", ", mu == 0))
+        ), 
+        col = c("black", "red"), 
+        lwd = 2, lty = 1, bty = "n", cex = 1.5
+    )  
+    
+}
+
+png("plots/proposal_plot.png", width = 9, height = 5, units = "in", res = 300)
+
+par(mar = c(4, 4, 1, 1))
+
+proposal_plot()
+
+dev.off()
+
+# perform importance sampling algorithm
+
+importance_sampling = function() {
+    
+    gx_samples = inverse_cdf(seed, n, alpha = 4, k = 2, mu)
+    
+    weights = pdf(gx_samples, alpha, k, mu) / pdf(gx_samples, alpha = 4, k = 2, mu)
+    
+    options(scipen = 999)
+    
+    simple_mean = mean(inverse_cdf(seed, n, alpha, k, mu))
+    simple_variance = var(inverse_cdf(seed, n, alpha, k, mu))
+    IS_mean = mean(gx_samples * weights)
+    IS_variance = var(gx_samples * weights) / n
+    
+    results = data.frame(
+        Mean = c(simple_mean, IS_mean),
+        Variance = c(simple_variance, IS_variance)
+    )
+    
+    rownames(results) = c("Simple", "IS")
+
+    print(results)
+    
+}
+
+importance_sampling()
+```
+
+# Part 2 
+
+Part 2 focused on Markov chain Monte Carlo (MCMC). After explaining some of the theoretical justification for the MCMC method, I computed the empirical invariant distribution of a randomly-generated Markov chain and showed how it almost surely converges to the chain's theoretical invariant distribution.
+
+```{r}
+# initialise values
+
+seed = 576            # random seed
+n_states = 5          # number of states in Markov chain
+n = 100000            # (max) sample size for empirical distribution
+options(scipen = 999) # avoids printing in scientific notation
+
+# ensure plots folder is created
+if (!dir.exists("plots")) dir.create("plots")
+
+# generate transition matrix
+
+generate_transition_matrix = function(seed, n_states) {
+    
+    set.seed(seed)
+    
+    transition_matrix = matrix(runif(n_states * n_states), nrow = n_states)
+    transition_matrix = t(apply(transition_matrix, 1, function(x) x / sum(x))) # Normalize each row to sum to 1
+    
+    return(transition_matrix)
+    
+}
+
+P = generate_transition_matrix(seed, n_states)
+
+# check if P is irreducible
+
+is_irreducible = function(matrix, max_iterations) {
+
+    irreducible = FALSE
+    
+    if (sqrt(length(matrix)) %% 1 != 0) {
+        stop("P must be a square matrix")
+    }
+
+    Pk = matrix
+
+    for (k in 1:max_iterations) {
+
+        Pk = Pk %*% matrix
+
+        if (all(Pk > 0)) {
+            # if all the elements are positive, the transition matrix is irreducible
+            irreducible = TRUE
+            return(list(
+                irreducible = irreducible,
+                message = paste("Matrix is irreducible (k = ", k, ")", sep = "")
+            ))
+        } else {
+            return(list(
+                irreducible = irreducible,
+                message = paste("Matrix is still reducible after", max_iterations, "iterations")
+            ))
+        }
+    }
+
+}
+
+is_irreducible(matrix = P, max_iterations = 100000)
+
+# check if P is aperiodic
+
+is_aperiodic = function(matrix) {
+  
+    # if P is irreducible, then we just need to check that at least 1 P[i,i]
+    # is > 0. If P is not irreducible, we would need to correct that.
+    if (is_irreducible(matrix = matrix, max_iterations = 1000)$irreducible == TRUE) {
+        for (i in 1:length(diag(matrix))) {
+            if (i > 0) {
+                return(TRUE)
+            }
+        }
+    } else {
+        return(FALSE)
+    }
+  
+}
+
+is_aperiodic(matrix = P)
+
+# check if P is positive recurrent
+
+is_positive_recurrent = function(matrix) {
+  
+    # if P is aperiodic, is.aperiodic(P) == TRUE also means P is irreducible (see
+    # function code). as such, P simply needs to have a finite number of states
+    # to be positive recurrent
+    
+    if (is_aperiodic(matrix = matrix) == TRUE) {
+        return(is.finite(nrow(matrix)))
+    }
+  
+}
+
+is_positive_recurrent(matrix = P)
+
+# calculate invariant distribution
+
+invariant_distribution = function(matrix) {
+    
+    # eigen(matrix) gives the right-eigenvectors of a matrix. So, to get the
+    # left-eigenvectors, we can transpose the matrix eigen(t(matrix)). Since the
+    # right-eigenvectors of t(matrix) == left-eigenvectors of matrix
+    
+    # get eigenvalues and eigenvectors of transposed transition matrix
+    eigen = eigen(t(matrix))
+    
+    # extract real components of eigenvalues
+    eigenvalues = Re(round(eigen$values, 8))
+    
+    # extract real components of eigenvectors
+    left_eigenvectors = Re(eigen$vectors)
+    
+    # obtain pi (the left-eigenvector with eigenvalue = 1)
+    pi = left_eigenvectors[, which(eigenvalues == 1)]
+    
+    # normalise pi
+    invariant_dist  = pi / sum(pi)
+    
+    return(invariant_dist)
+    
+}
+
+invariant_distribution(matrix = P)
+
+# simulate Markov chain
+
+simulate_Markov_chain = function(n_states, matrix, sample_size) {
+    
+    set.seed(seed)
+    
+    samples = sample(
+        1:n_states, 
+        size = sample_size, 
+        replace = TRUE, 
+        prob = invariant_distribution(matrix = matrix)
+    )
+    
+    empirical_distribution = table(samples, dnn = "") / sample_size
+    
+    return(empirical_distribution)
+    
+}
+
+simulate_Markov_chain(n_states = n_states, matrix = P, sample_size = n)
+
+# compare empirical v theoretical invariant distributions
+
+empirical_vs_theoretical = function() {
+    
+    differences = data.frame()
+    
+    for (i in seq(100, n, by = 100)) {
+        
+        sample_size = i
+        empirical = simulate_Markov_chain(n_states = n_states, matrix = P, sample_size = i)
+        theoretical = invariant_distribution(matrix = P)
+        
+        difference = empirical - theoretical
+        
+        differences = rbind(
+            differences, 
+            data.frame(
+                sample_size = sample_size,
+                state_1 = difference[1],
+                state_2 = difference[2],
+                state_3 = difference[3],
+                state_4 = difference[4],
+                state_5 = difference[5]
+            )
+        )
+        
+    }
+    
+    matplot(
+        
+        x = differences$sample_size, 
+        y = differences[,2:ncol(differences)], 
+        
+        type = "l", 
+        lty = 1, 
+        lwd = 2, 
+        col = rainbow(ncol(differences)-1), 
+        
+        main = "",
+        xlab = "Sample Size",
+        ylab = "Difference (Empirical - Theoretical)",
+        
+        ylim = c(-0.1, 0.1)
+        
+    )
+    
+    abline(h = 0, col = "black", lty = 2, lwd = 2)
+
+    legend(
+        "topright", 
+        legend = paste("State", 2:ncol(differences)-1), 
+        col = rainbow(ncol(differences)-1), 
+        lty = 1, 
+        lwd = 2
+    )
+
+}
+
+png("plots/empirical_vs_theoretical.png", width = 8, height = 6, units = "in", res = 300)
+
+par(mar = c(4, 4, 1, 1))
+
+empirical_vs_theoretical()
+
+dev.off()
+```
+
+# Part 3
+
+Part 3 involved explaining a particular application of Monte Carlo methods in 1 of 4 published academic articles and attempting to reproduce part of their simulation. I decided to focus on an article which developed a novel agent-based predictive model for the spread of Covid-19 in Israel, utilising pseudo-randomness to simulate real-world phenomena such as proximity between individuals in a geographic region, or probability of infection given vaccination status.
+
+```{r}
+# Initialise values
+
+seed = 576
+N = 1.1 * 10^4
+N_I = floor(N * (2000 / (9.2 * 10^6)))
+N_RC = N * 0.05
+L_0 = 124
+t_span = 57
+
+options(scipen = 999)
+
+# ensure plots folder is created
+if (!dir.exists("plots")) dir.create("plots")
+
+initialise_particle_df = function(N, N_I, N_RC, L_0, seed) {
+
+    set.seed(seed)
+
+    N_SI = N - N_RC
+    N_S = N_SI - N_I
+
+    IDs = sample(1:N)
+
+    N_SI_IDs = IDs[1:N_S]
+    N_I_IDs = IDs[(N_S + 1):(N_S + N_I)]
+    N_RC_IDs = IDs[(N_S + N_I + 1):(N_S + N_I + N_RC)]
+
+    particle_df = data.frame(
+        x = runif(N, 0, L_0),
+        y = runif(N, 0, L_0),
+        SIR_status = rep(NA, N),
+        day_vaccinated = rep(Inf, N),
+        vaccine_effectiveness = rep(0, N),
+        day_infected = rep(NA, N),
+        is_infectious = rep(FALSE, N),
+        age_group = cut(
+            1:N,
+            breaks = c(0, N * 0.2, N * 0.83, N),
+            labels = c("0-11", "12-59", "60+")
+        )
+    )
+
+    particle_df$SIR_status[N_SI_IDs] = "susceptible"
+    particle_df$SIR_status[N_I_IDs] = "infected"
+    particle_df$day_infected[N_I_IDs] = -3
+    particle_df$SIR_status[N_RC_IDs] = "recovered"
+
+    vaccinated_12_59 = sample(
+        which(particle_df$age_group == "12-59"), 
+        size = round(0.15 * length(which(particle_df$age_group == "12-59")))
+    )
+    vaccinated_60plus = sample(
+        which(particle_df$age_group == "60+"), 
+        size = round(0.70 * length(which(particle_df$age_group == "60+")))
+    )
+
+    particle_df$day_vaccinated[c(vaccinated_12_59, vaccinated_60plus)] = 1
+
+    return(particle_df)
+
+}
+
+init_df = initialise_particle_df(N = N, N_I = N_I, N_RC = N_RC, L_0 = L_0, seed = seed)
+
+vaccine_effectiveness = function(particle_df, t, VE_days = c(7, 28, 150, 180), VE_level) {
+    
+    T_V = particle_df$day_vaccinated
+    VE = numeric(length(T_V))  
+    is_vaccinated = is.finite(T_V)
+    
+    VE[is_vaccinated & (t - T_V) <= VE_days[1]] = 0
+    
+    days_8_to_28 = is_vaccinated & (t - T_V) > VE_days[1] & (t - T_V) <= VE_days[2]
+    VE[days_8_to_28] = VE_level * (((t - T_V)[days_8_to_28] - VE_days[1]) / (VE_days[2] - VE_days[1]))
+    
+    days_29_to_150 = is_vaccinated & (t - T_V) > VE_days[2] & (t - T_V) <= VE_days[3]
+    VE[days_29_to_150] = VE_level
+    
+    days_151_180 = is_vaccinated & (t - T_V) > VE_days[3] & (t - T_V) <= VE_days[4]
+    VE[days_151_180] = VE_level * (1 - (((t - T_V)[days_151_180] - VE_days[3]) / (3 * (VE_days[4] - VE_days[3]))))
+    
+    days_181_plus = is_vaccinated & (t - T_V) > VE_days[4]
+    VE[days_181_plus] = 2 * (VE_level / 3)
+    
+    particle_df$vaccine_effectiveness = VE
+    return(particle_df)
+
+}
+
+is_infectious = function(particle_df, t) {
+    
+    infectious_status = rep(FALSE, nrow(particle_df))
+    
+    infected = (particle_df$SIR_status == "infected")
+    
+    infectious_now = infected & (t - particle_df$day_infected >= 4)
+    
+    infectious_status[infectious_now] = TRUE
+    particle_df$is_infectious = infectious_status
+    
+    return(particle_df)
+  
+}
+
+box_muller = function(n, mu, sigma, seed) {
+
+    set.seed(seed)
+    
+    U1 = runif(n, min = 0, max = 1)
+    U2 = runif(n, min = 0, max = 1)
+    
+    Z0 = sqrt(-2 * log(U1)) * cos(2 * pi * U2)
+    Z1 = sqrt(-2 * log(U1)) * sin(2 * pi * U2)
+    
+    X0 = mu + sigma * Z0
+    X1 = mu + sigma * Z1
+    
+    return(list(X0 = X0, X1 = X1))
+
+}
+
+infection_probability = function(particle_df, t, sigma) {
+    
+    susceptible_idx = which(particle_df$SIR_status == "susceptible")
+    infectious_idx = which(particle_df$is_infectious)
+    
+    if (length(susceptible_idx) == 0 || length(infectious_idx) == 0) {
+        return(particle_df)
+    }
+    
+    dist_sq = outer(particle_df$x[susceptible_idx], particle_df$x[infectious_idx], "-")^2 + outer(particle_df$y[susceptible_idx], particle_df$y[infectious_idx], "-")^2
+    
+    decay = exp(- (dist_sq / (2 * sigma^2))^2)
+    
+    ve_matrix = matrix(1 - particle_df$vaccine_effectiveness[susceptible_idx], nrow = length(susceptible_idx), ncol = length(infectious_idx))
+    infection_matrix = ve_matrix * decay
+    
+    infection_prob = rowSums(infection_matrix)
+    
+    newly_infected = which(infection_prob > 0)
+    if (length(newly_infected) > 0) {
+        infected_ids = susceptible_idx[newly_infected]
+        particle_df$SIR_status[infected_ids] = "infected"
+        particle_df$day_infected[infected_ids] = t
+    }
+    
+    return(particle_df)
+
+}
+
+simulation = function(N, N_I, N_RC, L_0, seed, t_span, R_t, sigma, VE_level) {
+
+    particle_df = initialise_particle_df(N = N, N_I = N_I, N_RC = N_RC, L_0 = L_0, seed = seed)
+    L = (L_0 * sqrt(1.25)) / R_t
+    daily_new_infections = numeric(t_span)
+    
+    pb = txtProgressBar(min = 0, max = t_span, style = 3)
+    
+    for (t in 1:t_span) {
+        
+        particle_df = vaccine_effectiveness(particle_df = particle_df, t, VE_level = VE_level)
+        particle_df = is_infectious(particle_df, t)
+        
+        particle_df = infection_probability(particle_df, t, sigma = sigma)
+        
+        newly_infected_today = sum(particle_df$day_infected == t, na.rm = TRUE)
+        daily_new_infections[t] = newly_infected_today
+        
+        k = 1
+        total_target_vaccinated = floor(N * 1 - exp(-k * t))
+        
+        current_vaccinated = sum(is.finite(particle_df$day_vaccinated))
+        new_vaccinations_needed = total_target_vaccinated - current_vaccinated
+        
+        if (new_vaccinations_needed > 0) {
+            eligible = which(!is.finite(particle_df$day_vaccinated))
+            
+            if (length(eligible) > 0) {
+                n_to_vaccinate = min(new_vaccinations_needed, length(eligible))
+                chosen = sample(eligible, n_to_vaccinate)
+                particle_df$day_vaccinated[chosen] = t
+            }
+        }
+        
+        bm = box_muller(n = nrow(particle_df), mu = 0, sigma = L_0 / 2, seed = seed + t)
+        particle_df$x = (particle_df$x + bm$X0) %% L
+        particle_df$y = (particle_df$y + bm$X1) %% L
+        
+        setTxtProgressBar(pb, t)
+        
+    }
+    
+    close(pb)
+    return(list(particle_df = particle_df, daily_new_infections = daily_new_infections))
+  
+}
+
+results = simulation(N, N_I, N_RC, L_0, seed, t_span = t_span, R_t = 1.1, sigma = 0.1, VE_level = 0.9)
+moving_average = stats::filter(results$daily_new_infections, rep(1/7, 7), sides = 1)
+
+png("plots/reproduced_figure1B.png", width = 8, height = 6, units = "in", res = 300)
+
+par(mar = c(4, 4, 1, 1))
+
+plot(
+    moving_average, 
+    type = "l", 
+    col = "blue", 
+    lwd = 2,
+    ylab = "Daily new cases, All (7-days moving average)",
+    ylim = c(0, 1200),
+    xlab = "Day",
+    main = ""
+)
+
+dev.off()
+```

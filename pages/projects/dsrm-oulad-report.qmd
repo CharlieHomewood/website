@@ -1,0 +1,37 @@
+---
+title: "Analysis of OULAD"
+date: 2025-01-06
+image: ../../assets/thumbnails/dsrm-oulad-report.png
+categories: [University Project, Python]
+description: |
+    My submitted report, analysing the Open University Learning Analysis Dataset (OULAD), in completion of the Data Science Research Methods (L7) (970G1) module.
+execute:
+    eval: false
+---
+
+The following is a report I wrote, detailing my analysis of the Open University Learning Analysis Dataset (OULAD). 
+
+OULAD is a popular database of real-world students interaction with course provided by the Open University. This analysis focused on the years 2013 and 2014 and aimed to answer the following research questions: 
+
+ - Is the virtual learning environment (VLE) improving students’ grades?
+ - Can we predict students grades?
+
+By using principal component analysis, I compared "high" and "low" VLE engagement students and compared their average exam scores, finding that "high" VLE engagement students had significantly higher exam scores than "low" VLE engagement students, although the difference was not particularly large.
+
+To predict student grades, I constructed a logistic regression model to predict if a student passed or failed their course, achieving a model accuracy of 0.78.
+
+Below are the Jupyter notebook and PDF report submitted for this assignment.
+
+<iframe
+    src="https://nbviewer.org/urls/charliehomewood.github.io/DSRM_A1_report/report.ipynb"
+    width="100%"
+    height="800"
+    style="border: none;">
+</iframe>
+
+<iframe
+    src="https://charliehomewood.github.io/DSRM_A1_report/report.pdf"
+    width="100%"
+    height="800"
+    style="border: none;">
+</iframe>

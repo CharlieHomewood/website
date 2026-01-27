@@ -1,0 +1,22 @@
+---
+title: "Projects"
+listing:
+    id: projects-listing
+    contents: "projects/*.qmd"
+    sort: "date desc"
+    type: grid
+    sort-ui: false
+    filter-ui: true
+    categories: true
+---
+
+Below is a list of projects I have worked on, either as part of my education or in my spare time. 
+
+University projects comprise assessed work I have completed and vary in their nature, such as pdf reports, jupyter notebooks or presentation slides. **These projects do not account for all my university work**, they are instead just those pieces which are presentable and relevant to data analysis/science.
+
+My overall aim with personal projects is to implement a new skill I am learning in a context I find interesting. The pages for these projects take a more consistent blog-like format, where I summarise my approach.
+
+Feel free to take a look! If there is a particular project you're looking for, you can make use of the filter search bar, or you can select from *Categories* in the top right.
+
+::: {#projects-listing}
+:::
