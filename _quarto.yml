@@ -34,3 +34,4 @@ format:
     mainfont: spectral
     css: styles.css
     toc: true
+    include-in-header: include-head.html
