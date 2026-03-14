@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - site_libs
 
 website:
   title: "Charlie Homewood"
@@ -14,7 +16,7 @@ website:
         text: CV
   page-footer: "Copyright 2026, Charlie Homewood" 
   favicon: assets/me.png
-  site-url: https://charliehommwood.github.io/yoursite/
+  site-url: https://charliehomewood.github.io/website/
   search:
     type: textbox
   back-to-top-navigation: true
