@@ -1,0 +1,23 @@
+---
+title: "Machine Learning Coursework"
+date: 2026-04-17
+image: ../../assets/thumbnails/ml_coursework.png
+categories: [University Project, Python]
+description: |
+    My submitted Jupyter notebook in completion of the Machine Learning (934G5) module.
+execute:
+    eval: false
+---
+
+This assignment for the Machine Learning (934G5) module focused on weather prediction. This task involved training a multi-layer perceptron (MLP) to be used to predict the values of $4$ weather metrics in $7$ days time, given a date, location and its associated local weather history. For this assignment, I achieved a grade of $72\%$
+
+In my approach, I decided on using $1$ week of weather history (lagged variants of the $4$ outcome variables) along with the latitude and longitude and the day of the year (sine and cosine transformations) as predictors. A train-validate-test paradigm was used, whereby the validation set was used for assessing model overfitting. The resulting MLP had $2$ hidden layers of sizes $64$ and $32$, respectively, with an output layer size of $5$ corresponding to the predictions for each of the $4$ weather metrics (wind direction was transformed to a sine and cosine variant, thereby constituting $2$ outcome variables). Model validation was assessed via mean-squared error and test results were also interpreted using MSE but considering each outcome variable separately. 
+
+Below is the submitted Jupyter notebook I used in this assignment:
+
+<iframe
+    src="https://nbviewer.org/github/CharlieHomewood/machine-learning-coursework/blob/main/ml_coursework.ipynb"
+    width="100%"
+    height="800"
+    style="border: none;">
+</iframe>

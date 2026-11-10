@@ -1,0 +1,23 @@
+---
+title: "Network Science Coursework"
+date: 2026-05-16
+image: ../../assets/thumbnails/network_science_coursework.png
+categories: [University Project, Python]
+description: |
+    My submitted Jupyter notebook in completion of the Network Science (981G5) module.
+execute:
+    eval: false
+---
+
+This project involved a relatively broad aim: to investigate a meaningful research question relating to a real-world network, focusing on areas such as network structure or dynamics on and of the network. The choice of real-world network was left to my own discretion. For this assignment, I achieved a grade of $73\%$.
+
+For this assignment, I chose to focus on football (soccer) passing networks by representing their development across time (temporal networks) and comparing their structure and behaviour when the passing team was winning, drawing or losing a match. The aim was to see, if any, differences emerged which appeared to reflect genuine changes in network structure or behaviour beyond what could be accounted for via chance or confounding factors. Via the `statsbombpy` package in Python, I collected passing events data from $326$ WSL matches across $3$ seasons.
+
+You can view the Jupyter notebook I used for the completion of this assignment below:
+
+<iframe
+    src="https://nbviewer.org/github/CharlieHomewood/network-science-coursework/blob/main/ns_coursework.ipynb"
+    width="100%"
+    height="800"
+    style="border: none;">
+</iframe>
