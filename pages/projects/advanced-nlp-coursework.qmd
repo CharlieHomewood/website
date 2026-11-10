@@ -1,0 +1,27 @@
+---
+title: "Advanced Natural Language Processing Coursework"
+date: 2026-05-09
+image: ../../assets/thumbnails/adv_nlp_coursework.png
+categories: [University Project, Python]
+description: |
+    My submitted Jupyter notebook in partial completion of the Advanced Natural Language Processing (968G5) module.
+execute:
+    eval: false
+---
+
+The following Jupyter notebook outlines my approach to completing the coursework assignment for the [Advanced Natural Language Processing (968G5) module](https://www.sussex.ac.uk/study/modules/postgraduate/2026/97455-advanced-natural-language-processing) as part of my MSc Data Science course. For this assignment, I achieved a grade of $80\%$ (Distinction).
+
+This assignment constituted two supervised learning classification tasks: the first part involved training, evaluation and comparing two approaches to classifying labelled texts based on which propaganda technique is used by that text. This was therefore a multimodal classification task. The second task builds upon the first, involving the training, evaluation and comparison of two approaches to both identifying the propaganda label and also the location of the relevant propagandistic snippet in the text.
+
+My approach for task $1$ involved comparing a multimodel Naive Bayes classifier with a distilled Bidirectional Encoding Representations with Transformers (DistilBERT) model. My initial thoughts in choosing these models was that whilst it may be expected that a DistilBERT model would outperform a multimodel Naive Bayes classifier in terms of F1-score, the performance gain may not necessarily justify the substantial additional model complexity and training time. 
+
+Task $2$ used two variations on a DistilBERT model. Whilst both variations used BIO tagging for snippet identification, the second variation was augmented with a conditional random field (CRF) output layer. The rationale here is that BIO-tagged text cannot produce certain configurations of BIO tags, for instance an I-tagged token cannot follow an O-tagged token. A CRF layer helps to enforce entire valid tag sequences by considering such sequences as a whole rather than just considering each token in turn conditioned on the previous tokens. Therefore, the prior expectation was that the CRF layer would improve model performance on this task.
+
+Below is the notebook I produced for this assignment:
+
+<iframe
+    src="https://nbviewer.org/github/CharlieHomewood/advanced-nlp-coursework/blob/main/adv_nlp_coursework.ipynb"
+    width="100%"
+    height="800"
+    style="border: none;">
+</iframe>

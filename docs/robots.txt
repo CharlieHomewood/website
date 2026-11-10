@@ -1,1 +1,1 @@
-Sitemap: https://charliehomewood.com/sitemap.xml
+Sitemap: https://charliehomewood.github.io/website/sitemap.xml

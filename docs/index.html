@@ -70,16 +70,17 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<base href="https://charliehomewood.github.io/website/">
 
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Charlie Homewood">
-<meta property="og:image" content="https://charliehomewood.com/assets/me.png">
+<meta property="og:image" content="https://charliehomewood.github.io/website/assets/me.png">
 <meta property="og:site_name" content="Charlie Homewood">
 <meta property="og:image:height" content="256">
 <meta property="og:image:width" content="256">
 <meta name="twitter:title" content="Charlie Homewood">
-<meta name="twitter:image" content="https://charliehomewood.com/assets/me.png">
+<meta name="twitter:image" content="https://charliehomewood.github.io/website/assets/me.png">
 <meta name="twitter:image-height" content="256">
 <meta name="twitter:image-width" content="256">
 <meta name="twitter:card" content="summary_large_image">
@@ -146,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
 </div><div class="column">
 <section id="hello" class="level2">
 <h2 class="anchored" data-anchor-id="hello">Hello!</h2>
-<p>I’m Charlie, a current MSc Data Science student at the University of Sussex. I am a passionate data scientist who enjoys using statistical inference and machine learning to explore interesting and important questions to provide valuable insights from data.</p>
+<p>I’m Charlie, a MSc Data Science graduate from the University of Sussex. I am a passionate data scientist who enjoys using statistical inference and machine learning to explore interesting and important questions to provide valuable insights from data.</p>
 <p>Despite not really knowing much about data science before starting higher education, I quickly found myself drawn to experimental methodology, metascience and, of course, statistical analysis. I began coding in R as an undergraduate and have picked up Python and SQL along the way, working on numerous projects as part of my work, studies and beyond. Doing so has consistently confirmed to me that data science is the right fit for me.</p>
 <p>This website serves to showcase my journey as a data scientist, where I will document <a href="./pages/projects.html">projects</a> I work on that aim to challenge me to develop new skills.</p>
 <p>I’m also keen to build a <a href="./pages/knowledge-base.html">data science knowledge base</a> and share it with anyone who is interested, both as an exercise in demonstrating my own understanding and to provide support to others in the manner that I have been supported in my learning process.</p>
@@ -392,7 +393,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/charliehomewood\.com");
+      var filterRegex = new RegExp("https:\/\/charliehomewood\.github\.io\/website\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

@@ -5,6 +5,8 @@ image: ../../assets/thumbnails/dat-software-exercise.png
 categories: [University Project, Python]
 description: |
     My submitted 3-part Jupyter notebook in completion of the Data Analysis Techniques (890F3) module.
+execute:
+    eval: false
 ---
 
 During my MSc Data Science course, I completed a software exercise as the main assignment for the [Data Analysis Techniques (890F3) module](https://www.sussex.ac.uk/study/modules/postgraduate/2024/98489-data-analysis-techniques). 

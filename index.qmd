@@ -20,7 +20,7 @@ image: "assets/me.png"
 
 ## Hello!
 
-I'm Charlie, a current MSc Data Science student at the University of Sussex. I am a passionate data scientist who enjoys using statistical inference and machine learning to explore interesting and important questions to provide valuable insights from data.
+I'm Charlie, a MSc Data Science graduate from the University of Sussex. I am a passionate data scientist who enjoys using statistical inference and machine learning to explore interesting and important questions to provide valuable insights from data.
 
 Despite not really knowing much about data science before starting higher education, I quickly found myself drawn to experimental methodology, metascience and, of course, statistical analysis. I began coding in R as an undergraduate and have picked up Python and SQL along the way, working on numerous projects as part of my work, studies and beyond. Doing so has consistently confirmed to me that data science is the right fit for me.
 
