@@ -4,6 +4,9 @@ project:
   resources:
     - site_libs
 
+filters:
+  - current-year.lua
+
 website:
   title: "Charlie Homewood"
   navbar:
@@ -14,7 +17,7 @@ website:
         text: Knowledge Base
       - href: pages/cv.qmd
         text: CV
-  page-footer: "Copyright 2026, Charlie Homewood" 
+  page-footer: "Copyright {{< meta year >}}, Charlie Homewood" 
   favicon: assets/me.png
   site-url: https://charliehomewood.github.io/website/
   site-path: "/website/"
