@@ -17,6 +17,7 @@ website:
   page-footer: "Copyright 2026, Charlie Homewood" 
   favicon: assets/me.png
   site-url: https://charliehomewood.github.io/website/
+  site-path: "/website/"
   search:
     type: textbox
   back-to-top-navigation: true
